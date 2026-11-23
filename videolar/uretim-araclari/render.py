@@ -334,6 +334,9 @@ def build_captions():
         for ch in chunks:
             wt = []
             for w in ch:
+                ex = s.get("tts_word_starts")
+                if ex and len(ex) == len(words):   # ElevenLabs kelime zamanlaması
+                    t = ex[wi]
                 wt.append(t); t += dur * wts[wi] / tsum; wi += 1
             caps.append({"words": ch, "wt": wt, "start": wt[0], "end": t})
     for i in range(len(caps) - 1):
