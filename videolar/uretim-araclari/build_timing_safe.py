@@ -27,9 +27,12 @@ for i in range(len(raw) - 1):
     mid = (raw[i][1] + raw[i + 1][0]) / 2
     a = int(max(prev + 0.2, mid - 0.6) * 100); b = int(min(last - 0.2, mid + 0.6) * 100)
     if b <= a: cuts.append((mid, False)); continue
-    k = a + int(np.argmin(dbw[a:b]))
-    tq = k * 0.01
-    cuts.append((tq, bool(dbw[k] < SIL_DB))); prev = tq
+    # en sessiz noktayı değil, iki yanı da sessiz (±30 ms < -40 dB) olan ve tahmine en yakın noktayı seç
+    ok = [k for k in range(a, b) if db[max(0, k - 5):k + 6].max() < -40]
+    if ok:
+        k = min(ok, key=lambda k: abs(k * 0.01 - mid)); cuts.append((k * 0.01, True)); prev = k * 0.01
+    else:
+        k = a + int(np.argmin(dbw[a:b])); cuts.append((k * 0.01, False)); prev = k * 0.01
 
 FADE = int(0.015 * sr)
 def fade(seg, fin, fout):
@@ -60,8 +63,8 @@ cut_ok = sum(1 for c in bounds if c[1])
 print(f"kesilebilir sınır: {cut_ok}/{len(bounds)}  |  sessizlik eklenemeyen (ses kesilmedi): {bad}")
 for i, c in enumerate(bounds):
     if c[1]:
-        lvl = dbw[int(c[0] * 100)]
-        assert lvl < SIL_DB, f"HATA: {P[i+1]['scene']} sınırında konuşma varken kesim ({lvl:.1f} dB)"
+        k = int(c[0] * 100); lvl = db[max(0, k - 5):k + 6].max()
+        assert lvl < -40, f"HATA: {P[i+1]['scene']} sınırında konuşma varken kesim ({lvl:.1f} dB)"
 
 with wave.open("voice.wav", "wb") as w:
     w.setnchannels(1); w.setsampwidth(2); w.setframerate(sr); w.writeframes((out * 32767).astype(np.int16).tobytes())
