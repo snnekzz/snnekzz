@@ -25,7 +25,7 @@ pulse_len = int(.3 * SR); pl = np.sin(2*np.pi*50*np.arange(pulse_len)/SR) * np.e
 tc = st("siege") + .5
 while tc < en("rescue"):
     i = int(tc * SR)
-    if i + pulse_len < N: music[i:i+pulse_len] += .18 * pl
+    if i + pulse_len < N: music[i:i+pulse_len] += .24 * pl
     tc += 0.75
 e_ = np.convolve(np.abs(voice), np.ones(int(.12*SR))/int(.12*SR), mode="same")
 duck_env = np.convolve(np.where(e_ > .01, .55, 1.0), np.ones(int(.3*SR))/int(.3*SR), mode="same").astype(np.float32)
@@ -41,21 +41,21 @@ def stampsnd():
 def boom():
     tt = np.arange(int(2.2*SR))/SR; return np.sin(2*np.pi*(32 + 45*np.exp(-tt*6))*tt) * np.exp(-tt*1.8)
 for at in (st("y1921") + .2, st("y1973") + .2, st("operation") + .2):
-    add(thump(), at, .14)
-add(boom(), st("operation") + .05, .20)
+    add(thump(), at, .20)
+add(boom(), st("operation") + .05, .32)
 # yumuşak geçiş: tizleri kesilmiş, yavaş yükselip alçalan hava sesi (kulak tırmalamaz)
 from scipy.signal import butter, sosfilt
 def soft_swell(d=1.6):
     n = int(d * SR); x = rng.standard_normal(n)
-    x = sosfilt(butter(4, 380, "low", fs=SR, output="sos"), x)
+    x = sosfilt(butter(3, [140, 1100], "band", fs=SR, output="sos"), x)
     x /= np.max(np.abs(x)) + 1e-9
     tt = np.arange(n) / SR
     e = np.sin(np.pi * tt / d) ** 3                      # yumuşak giriş/çıkış
     low = np.sin(2 * np.pi * (70 + 25 * tt / d) * tt) * 0.35
     return (x * 0.8 + low) * e
 for sc in ("name", "who", "y1921", "y1973", "size", "operation", "today", "cta"):
-    add(soft_swell(), st(sc) - .9, .06)
-sfx_duck = np.convolve(np.where(e_ > .01, .35, 1.0), np.ones(int(.2*SR))/int(.2*SR), mode="same").astype(np.float32)
+    add(soft_swell(), st(sc) - .7, .10)
+sfx_duck = np.convolve(np.where(e_ > .01, .80, 1.0), np.ones(int(.2*SR))/int(.2*SR), mode="same").astype(np.float32)
 sfx *= sfx_duck   # konuşma varken efektler ~%65 kısılır, sesi asla bastırmaz
 mix = voice + music + sfx; mix /= max(1.0, np.max(np.abs(mix)) / .95)
 with wave.open("mix_raw.wav", "wb") as w:
