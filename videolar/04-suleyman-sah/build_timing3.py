@@ -2,7 +2,7 @@
 import json, wave, numpy as np, librosa
 P = json.load(open("timing_piper.json"))["segs"]
 d = json.load(open("dtw_out.json")); raw = d["raw"]; pauses = d["pauses"]
-EXTRA = {"who": 0.2, "y1921": 0.3, "y1973": 0.3, "siege": 0.5, "operation": 0.7, "today": 0.4, "cta": 0.3}
+EXTRA = {"who": 0.1, "y1921": 0.15, "y1973": 0.15, "siege": 0.3, "operation": 0.45, "today": 0.2, "cta": 0.2}
 y, sr = librosa.load("eleven.mp3", sr=44100)
 r = librosa.feature.rms(y=y, frame_length=441, hop_length=441)[0]
 db = 20*np.log10(r+1e-9)
