@@ -26,6 +26,8 @@ Her yeni videoda bu listeyi uygula. Kaynak: kendi deneyimlerimiz + Haritalogy ka
 - Ses seviyesi: -14 LUFS (YouTube standardı).
 
 ## ❌ Yapılan hatalar (tekrarlama)
+- **Sesi kelime içinden kesmek** (Süleyman Şah, hızlandırılmış ses): sessizlik eklerken duraklama bulunamayınca ses kesildi → kesik kesik ses. Çözüm: `build_timing_safe.py` + efektleri konuşma altında otomatik kısma (`sfx_duck`).
+- Ses hızlandırıldıktan sonra hizalamayı eski araçla yapmak → duraklamalar kısalır, mutlaka güvenli araç.
 - Piper TTS → yabancı aksanlı Türkçe. Kullanma.
 - Tam ekran bayrak dolguları → karışık görüntü.
 - Yüksek geçiş efektleri → kulak tırmalıyor.
@@ -36,7 +38,7 @@ Her yeni videoda bu listeyi uygula. Kaynak: kendi deneyimlerimiz + Haritalogy ka
 ## 📝 İş akışı
 1. Senaryo (`script.py`): seslendirme metni (sayılar yazıyla) + ekran altyazısı (rakamlarla).
 2. ElevenLabs'ta seslendirme → MP3.
-3. DTW ile cümle hizalama (`dtw.py`, `build_timing3.py`), kritik anlara ek sessizlik.
+3. DTW ile cümle hizalama (`dtw.py`) + **`build_timing_safe.py`** (ses ASLA kelime içinden kesilmez; sadece < -35 dB sessizlikte kesim, otomatik kontrol). `build_timing3.py` KULLANMA.
 4. Müzik/efekt (`make_audio*.py`).
 5. Render (4 paralel parça) → birleştirme.
 6. Kapak (dikey 1080×1920 + yatay 1280×720) + paylaşım metinleri.
