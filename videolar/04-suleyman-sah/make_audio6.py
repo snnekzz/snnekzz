@@ -54,7 +54,7 @@ def soft_swell(d=1.6):
     low = np.sin(2 * np.pi * (70 + 25 * tt / d) * tt) * 0.35
     return (x * 0.8 + low) * e
 for sc in ("name", "who", "y1921", "y1973", "size", "operation", "today", "cta"):
-    add(soft_swell(), st(sc) - .7, .10)
+    add(soft_swell(), st(sc) - .7, .30)
 sfx_duck = np.convolve(np.where(e_ > .01, .80, 1.0), np.ones(int(.2*SR))/int(.2*SR), mode="same").astype(np.float32)
 sfx *= sfx_duck   # konuşma varken efektler ~%65 kısılır, sesi asla bastırmaz
 mix = voice + music + sfx; mix /= max(1.0, np.max(np.abs(mix)) / .95)
