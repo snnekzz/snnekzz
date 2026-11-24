@@ -53,3 +53,13 @@ Ayrıntılar: `HARITALOGY-TEKNIKLERI.md`
 - Sarı küçük etiket kutuları, ok zincirli yıllar (1912 → 1935), numaralı daireler
 - Kapanış sorusu ekranda büyük yazıyla
 - Kesit / boyut kıyası diyagramları
+
+## 🆕 "Haritanın Ardı" analizinden eklenecekler
+Ayrıntılar: `HARITANIN-ARDI-TEKNIKLERI.md`
+- Altyazı: ekranın üstünde, küçük, tek satır; anahtar kelime renkli kutuda (harita ortada temiz kalsın)
+- Marka açılış kartı (her videoda aynı tasarım)
+- El yazısı kısa notlar + ok
+- "Ya da" karşılaştırma kartları
+- Yolculuk sayaçları (gün/saat/km)
+- Yıllar serif yazıyla; kanal filigranı alt ortada
+- Başlıkta somut şaşırtıcı sayı; Türkiye/Osmanlı + yolculuk konuları en çok izleniyor
