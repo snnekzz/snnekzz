@@ -75,16 +75,16 @@ def pop():
 
 W1 = whoosh()
 for at in (0.6, st("name") - .4, st("zone") - .3, st("cta") - .2):
-    add(W1, at, .10)
+    pass  # geçiş sesi kaldırıldı
 for at in (st("y1880") + .3, st("y2004") + .3, st("y2006") + .3, st("y2018") + .3):
-    add(thump(), at, .30)
+    add(thump(), at, .16)
 for k in range(9):
-    add(fwip(), st("arrows") + .5 + k * .38, .14)
+    add(fwip(), st("arrows") + .5 + k * .38, .07)
 for k in range(6):
-    add(fwip(), st("y2004") + 1.2 + k * .3, .12)
-add(boom(), en("y2018") + .35, .45)
+    add(fwip(), st("y2004") + 1.2 + k * .3, .06)
+add(boom(), en("y2018") + .35, .28)
 for at in (st("name") + .2, st("unknown") + .4, st("unknown") + 1.2, st("zone") + 1.6, st("flu") + .8, st("cta") + 1.2):
-    add(pop(), at, .10)
+    pass  # pop kaldırıldı
 
 mix = voice + music + sfx
 mix /= max(1.0, np.max(np.abs(mix)) / .95)
