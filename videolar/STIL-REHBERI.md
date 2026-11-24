@@ -40,3 +40,12 @@ Her yeni videoda bu listeyi uygula. Kaynak: kendi deneyimlerimiz + Haritalogy ka
 4. Müzik/efekt (`make_audio*.py`).
 5. Render (4 paralel parça) → birleştirme.
 6. Kapak (dikey 1080×1920 + yatay 1280×720) + paylaşım metinleri.
+
+## 🆕 Haritalogy analizinden eklenecekler
+Ayrıntılar: `HARITALOGY-TEKNIKLERI.md`
+- Türkiye ile boyut kıyaslaması ("≈2x Türkiye") – uygun her videoda
+- Neon parıltılı ülke vurgusu (beyaz kenar + dış parıltı)
+- Tarihî bölümlerde eski kâğıt harita zemini
+- Sarı küçük etiket kutuları, ok zincirli yıllar (1912 → 1935), numaralı daireler
+- Kapanış sorusu ekranda büyük yazıyla
+- Kesit / boyut kıyası diyagramları
