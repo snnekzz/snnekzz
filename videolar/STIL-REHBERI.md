@@ -64,6 +64,15 @@ Ayrıntılar: `HARITANIN-ARDI-TEKNIKLERI.md`
 - Yıllar serif yazıyla; kanal filigranı alt ortada
 - Başlıkta somut şaşırtıcı sayı; Türkiye/Osmanlı + yolculuk konuları en çok izleniyor
 
+## 🆕 Haritanın Ardı hareketli analizinden (25.11.2026) – ZORUNLU
+Ayrıntılar: `HARITANIN-ARDI-TEKNIKLERI.md` bölüm 2
+- **Renk = anlam:** altyazıdaki ülke/yer adı, haritada boyandığı renkte kutuda; sayılar SARI kutuda; diğer vurgular mavi.
+- **Kanca:** gerçek+sayı → "Ama…" → "Peki neden…?" → "Cevap …" (ilk 7 sn). Kart: 4 kelimelik zıtlık ("İKİ KITA, SIFIR KÖPRÜ").
+- **Ses 0,0 sn'de başlar**; hedef ~2,3 kelime/sn, cümle arası ~0,4 sn.
+- **Görsel olay sıklığı:** her 1–1,5 sn'de yeni bir şey (boyama, iğne, sayaç, etiket, kamera hareketi).
+- Canlı ölçüm sayacı, "?" simgesi, şerit + şerit boyunca kayan etiket, kıtayı beyazlatma, odak dışını karartma, daktilo etiket, kıyas uçuşu.
+- Konuda Türkiye bağlantısı olmalı (yabancı konular onlarda da düşük izleniyor).
+
 ## 🎙️ Doğal ses kuralları (her videoda aynı tempo, AI havası yok)
 **Tempo – otomatik:** `auto_tempo.py ham.mp3 eleven.mp3` → Whisper ile ölçer, **5,9 hece/sn** hedefine getirir.
 - Sınır 0,95x–1,05x (fazlası yapay duyulur; Emrullah doğal olarak ~4,4 hece/sn, sakin anlatım – zorla hızlandırma); %2'den küçük farkta dokunmaz.
