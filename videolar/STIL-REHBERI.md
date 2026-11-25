@@ -79,3 +79,10 @@ Ayrıntılar: `HARITANIN-ARDI-TEKNIKLERI.md`
 
 **Ses işleme:** ElevenLabs çıktısına tempo dışında dokunma; kesme/sessizlik ekleme yok; -14 LUFS.
 **ElevenLabs:** "Harita seslendirme" sesi, Eleven Multilingual v2, tek versiyon.
+
+## 🏷️ Marka ve koruma (HER videoda zorunlu)
+Modül: `uretim-araclari/brand.py`
+- **Açılış kartı:** `brand_card(img, t, "SATIR 1", "SATIR 2 (sarı)", t_end)` – kırmızı "BİLİNMEYENİN PEŞİNDE" etiketi + iki satır başlık (İstiklal Yolu'ndaki tasarım). İlk 5–8 saniye.
+- **Gezinen filigran:** `watermark(img, t, TOTAL)` – logo + @BilinmeyeninPesinde, 7 sn'de bir yumuşakça yer değiştirir (kırpması/silmesi zor).
+- **Dosya künyesi:** `stamp_metadata(giris, cikis, başlık)` – telif bilgisi MP4'e gömülür.
+- Kaynak dosyalar (senaryo, kod, ham ses) GitHub'da tarih damgalı → sahiplik kanıtı.
