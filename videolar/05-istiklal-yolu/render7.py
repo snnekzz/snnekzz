@@ -9,6 +9,7 @@ import render as R
 from render import stamp_text, pill, partial, vis, prog, back, eout, ease, FA, F9, W, H, SS, OW, OH, FPS, TOTAL, st, en, font, polys, tr_up
 from render3 import A, L, RED, WHITE, YEL, BLACK, VIG, CLOUDS, clamp01
 from render4 import globe, sample, EARTH, fractal, Cam, persp_coeffs
+import brand
 
 FC, FP = "caveat.ttf", "playfair.ttf"           # el yazısı, serif
 LON0, LAT0D = 33.4, 40.9
@@ -183,6 +184,8 @@ def snow(img, t, a):
     img.alpha_composite(lay)
 
 def brand_card(img, t):
+    return brand.brand_card(img, t, "İNEBOLU'DAN ANKARA'YA", "BİR MERMİ KAÇ GÜNDE?", en("hook") + .2)
+def _old_brand_card(img, t):
     a = vis(t, .2, en("hook") + .2, .35, .4)
     if a <= 0: return
     sc = .9 + .1 * back(prog(t, .2, .4))
@@ -222,6 +225,8 @@ def caption_top(img, t):
     img.alpha_composite(lay, (0, int(330 * SS - size * 1.1)))
 
 def watermark(img, t):
+    return brand.watermark(img, t, TOTAL)
+def _old_watermark(img, t):
     a = .55 * min(prog(t, .5, .5), 1)
     stamp_text(img, "@BilinmeyeninPesinde", (W / 2, 1820 * SS), F9, 26, fill=WHITE, stroke=BLACK, alpha=a)
 
