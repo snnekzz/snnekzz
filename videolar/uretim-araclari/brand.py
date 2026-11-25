@@ -41,8 +41,18 @@ def brand_card(img, t, line1, line2, t_end, y_center=650):
     if a < 1: lay.putalpha(lay.getchannel("A").point(lambda v: int(v * a)))
     img.alpha_composite(lay, (0, int((y_center - 180) * SS)))
 
+import os
+_ISARET = os.path.join(os.path.dirname(os.path.abspath(__file__)), "isaret.png")
+_lc = {}
 def _logo(size):
-    """küçük büyüteç + dünya logosu"""
+    """kanal işareti (konum iğnesi + anahtar deliği, kanal/logo/isaret.png). Yoksa eski çizim."""
+    if os.path.exists(_ISARET):
+        if size not in _lc:
+            im = Image.open(_ISARET).convert("RGBA"); im = im.crop(im.getchannel("A").point(lambda v: 255 if v > 40 else 0).getbbox())
+            h = int(size * 1.25); _lc[size] = im.resize((max(1, int(im.width * h / im.height)), h), Image.LANCZOS)
+        return _lc[size]
+    return _logo_eski(size)
+def _logo_eski(size):
     s = size; im = Image.new("RGBA", (int(s * 1.3), int(s * 1.3)), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
     r = s * .42; cx = cy = s * .5
     d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=(40, 110, 200, 255), outline=WHITE, width=max(2, int(s * .07)))

@@ -86,6 +86,7 @@ Ayrıntılar: `HARITANIN-ARDI-TEKNIKLERI.md`
 ## 🏷️ Marka ve koruma (HER videoda zorunlu)
 Modül: `uretim-araclari/brand.py`
 - **Açılış kartı:** `brand_card(img, t, "SATIR 1", "SATIR 2 (sarı)", t_end)` – kırmızı "BİLİNMEYENİN PEŞİNDE" etiketi + iki satır başlık (İstiklal Yolu'ndaki tasarım). İlk 5–8 saniye.
-- **Gezinen filigran:** `watermark(img, t, TOTAL)` – logo + @BilinmeyeninPesinde, 7 sn'de bir yumuşakça yer değiştirir (kırpması/silmesi zor).
+- **Gezinen filigran:** `watermark(img, t, TOTAL)` – kanal işareti (`uretim-araclari/isaret.png`) + @BilinmeyeninPesinde, 7 sn'de bir yumuşakça yer değiştirir (kırpması/silmesi zor).
+- **Logo sistemi:** `kanal/logo/` – işaret = konum iğnesi + anahtar deliği. Renkler: Gece Mavisi #0A1222, Keşif Kırmızısı #E5243B, Bilinmeyen Altını #FFC94A, Parşömen #FBF7F0. Font: Montserrat 900/700. Profil fotoğrafı, YouTube banner'ı, kimlik sayfası `logo_pro.py` ile üretilir.
 - **Dosya künyesi:** `stamp_metadata(giris, cikis, başlık)` – telif bilgisi MP4'e gömülür.
 - Kaynak dosyalar (senaryo, kod, ham ses) GitHub'da tarih damgalı → sahiplik kanıtı.

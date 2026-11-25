@@ -1,6 +1,7 @@
 """Bilinmeyenin Peşinde – profesyonel logo sistemi (vektör).
 İşaret: KONUM İĞNESİ + ANAHTAR DELİĞİ (harita + sır). Anahtar deliğinden altın bir ışık sızar.
-Çıktılar: logo-*.svg (vektör, sonsuz büyütülebilir), profil-*.png (1600 px), kimlik-sayfasi.png
+Çıktılar: logo.svg + isaret.svg (vektör), profil-fotografi.png (1600 px, yuvarlak), isaret.png (filigran),
+          youtube-banner.png (2560x1440), kimlik-sayfasi.png
 Çalıştırma: python3 logo_pro.py   (Playwright/Chromium ile render eder)"""
 import math, os, subprocess, json
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -20,8 +21,6 @@ def sparkle(cx, cy, s, k=.16):
 THEMES = {
     # ad: (zemin iç, zemin dış, iğne üst, iğne alt, ışık, halka rengi, halka opaklık)
     "gece":   ("#1B2A4A", "#060A14", "#FF4A5C", "#C3102C", "#FFC94A", "#FFFFFF", .055),
-    "kirmizi": ("#F0303F", "#9E0B1E", "#FFFFFF", "#E4E7EE", "#FFC94A", "#FFFFFF", .09),
-    "krem":   ("#FBF7F0", "#E6DCCB", "#1F3157", "#0A1222", "#E5243B", "#0A1222", .06),
 }
 
 def svg(theme, size=1000, bg=True):
@@ -66,58 +65,73 @@ def svg(theme, size=1000, bg=True):
   </g>
 </svg>'''
 
-for t in THEMES:
-    open(f"{HERE}/logo-{t}.svg", "w").write(svg(t))
-open(f"{HERE}/logo-isaret-seffaf.svg", "w").write(svg("gece", bg=False))
 
-FONT = f"""@font-face{{font-family:M9;src:url(file://{HERE}/mont900.ttf)}}@font-face{{font-family:M7;src:url(file://{HERE}/mont700.ttf)}}"""
-def page(body, w, h, css=""):
-    return f"<html><head><style>{FONT}*{{margin:0;padding:0;box-sizing:border-box}}body{{width:{w}px;height:{h}px;overflow:hidden}}{css}</style></head><body>{body}</body></html>"
+open(f"{HERE}/logo.svg", "w").write(svg("gece"))
+open(f"{HERE}/isaret.svg", "w").write(svg("gece", bg=False))
 
-jobs = []
-for t in THEMES:
-    p = f"{HERE}/_p_{t}.html"; open(p, "w").write(page(svg(t, 1600), 1600, 1600)); jobs.append((p, f"{HERE}/profil-{t}.png", 1600, 1600))
-
-# --- kimlik sayfası (ajans sunumu) ---
 import re, itertools
 _uid = itertools.count()
 def uniq(x):   # aynı sayfada birden çok SVG: id çakışmasın
     n = next(_uid); return re.sub(r'(id="|url\(#)(\w+)', lambda m: f"{m.group(1)}{m.group(2)}{n}", x)
-def circ(t, s): return f'<div style="width:{s}px;height:{s}px;border-radius:50%;overflow:hidden;flex:none">{uniq(svg(t, s))}</div>'
+FONT = f"""@font-face{{font-family:M9;src:url(file://{HERE}/mont900.ttf)}}@font-face{{font-family:M7;src:url(file://{HERE}/mont700.ttf)}}"""
+def page(body, w, h, css=""):
+    return f"<html><head><style>{FONT}*{{margin:0;padding:0;box-sizing:border-box}}html,body{{background:transparent}}body{{width:{w}px;height:{h}px;overflow:hidden}}{css}</style></head><body>{body}</body></html>"
+def circ(s): return f'<div style="width:{s}px;height:{s}px;border-radius:50%;overflow:hidden;flex:none">{uniq(svg("gece", s))}</div>'
+jobs = []
+def job(name, html, w, h, transparent=False):
+    p = f"{HERE}/_{name}.html"; open(p, "w").write(page(html, w, h)); jobs.append((p, f"{HERE}/{name}.png", w, h, transparent))
+
+job("profil-fotografi", svg("gece", 1600), 1600, 1600)
+job("isaret", uniq(svg("gece", 512, bg=False)), 512, 512, True)
+
+# --- YouTube banner 2560x1440 (güvenli alan: x 507–2053, y 508–931; her şey bunun içinde) ---
+grid = "".join(f'<circle cx="685" cy="720" r="{r}" fill="none" stroke="#fff" stroke-opacity="{.07 - i*.008:.3f}" stroke-width="2"/>' for i, r in enumerate(range(260, 1500, 150)))
+grid += "".join(f'<line x1="{685+math.cos(t)*300:.0f}" y1="{720+math.sin(t)*300:.0f}" x2="{685+math.cos(t)*2600:.0f}" y2="{720+math.sin(t)*2600:.0f}" stroke="#fff" stroke-opacity=".035" stroke-width="2"/>' for t in [k * math.pi / 8 for k in range(16)])
+dots = "".join(f'<circle cx="{(k*397)%2560}" cy="{(k*233)%1440}" r="{1+(k%3)*.8}" fill="#fff" opacity="{.15+(k%5)*.08:.2f}"/>' for k in range(160))
+banner = f"""<div style="position:relative;width:2560px;height:1440px;background:radial-gradient(ellipse at 27% 50%,#1B2A4A 0%,#0A1222 45%,#05080F 100%);font-family:M7;color:#fff">
+<svg width="2560" height="1440" style="position:absolute;inset:0"><defs><filter id="g"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter>
+<radialGradient id="h" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#E5243B" stop-opacity=".28"/><stop offset="1" stop-color="#E5243B" stop-opacity="0"/></radialGradient></defs>
+{grid}{dots}<circle cx="685" cy="720" r="420" fill="url(#h)"/><rect width="2560" height="1440" filter="url(#g)" opacity=".06"/></svg>
+<div style="position:absolute;left:520px;top:555px;width:330px;height:330px">{uniq(svg("gece", 330, bg=False))}</div>
+<div style="position:absolute;left:870px;top:578px">
+  <div style="font-family:M7;font-size:26px;letter-spacing:9px;color:#FFC94A">HARİTA · TARİH · GİZEM</div>
+  <div style="font-family:M9;font-size:84px;line-height:1;margin-top:14px;white-space:nowrap">BİLİNMEYENİN <span style="color:#E5243B">PEŞİNDE</span></div>
+  <div style="font-size:31px;color:#AEB7C9;margin-top:22px">Tarihin, haritaların ve dünyanın bilinmeyen hikâyeleri</div>
+  <div style="display:inline-block;margin-top:26px;padding:10px 26px;border-radius:40px;background:#E5243B;font-family:M9;font-size:26px;letter-spacing:2px">HER HAFTA YENİ SHORTS</div>
+</div></div>"""
+job("youtube-banner", banner, 2560, 1440)
+
+# --- kimlik sayfası ---
 sw = [("#0A1222", "Gece Mavisi"), ("#E5243B", "Keşif Kırmızısı"), ("#FFC94A", "Bilinmeyen Altını"), ("#FBF7F0", "Parşömen")]
-body = f'''
+body = f"""
 <div style="display:flex;height:100%;background:#0A1222;color:#fff;font-family:M7">
-  <div style="width:1000px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 45%,#1B2A4A,#060A14)">
-    {circ("gece", 720)}
-  </div>
+  <div style="width:1000px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 45%,#1B2A4A,#060A14)">{circ(720)}</div>
   <div style="flex:1;padding:110px 90px 0 70px">
-    <div style="font-family:M7;font-size:22px;letter-spacing:8px;color:#FFC94A">MARKA KİMLİĞİ · 2026</div>
+    <div style="font-size:22px;letter-spacing:8px;color:#FFC94A">MARKA KİMLİĞİ · 2026</div>
     <div style="font-family:M9;font-size:92px;line-height:.98;margin-top:34px;letter-spacing:1px">BİLİNMEYENİN<br><span style="color:#E5243B">PEŞİNDE</span></div>
     <div style="font-size:26px;color:#AEB7C9;margin-top:26px;line-height:1.45">Tarihin, haritaların ve dünyanın<br>bilinmeyen hikâyeleri.</div>
     <div style="height:2px;background:#ffffff1a;margin:56px 0 40px"></div>
     <div style="font-size:18px;letter-spacing:5px;color:#7F8AA3">İŞARET · Konum iğnesi + anahtar deliği: haritadaki sır</div>
-    <div style="display:flex;gap:34px;margin-top:34px;align-items:flex-end">
-      {circ("gece", 170)}{circ("kirmizi", 170)}{circ("krem", 170)}
-      <div style="display:flex;gap:18px;align-items:flex-end;margin-left:14px">{circ("gece", 80)}{circ("gece", 44)}{circ("gece", 28)}</div>
-    </div>
+    <div style="display:flex;gap:30px;margin-top:34px;align-items:flex-end">{circ(170)}{circ(110)}{circ(70)}{circ(44)}{circ(28)}</div>
     <div style="display:flex;gap:22px;margin-top:56px">
       {"".join(f'<div><div style="width:150px;height:84px;border-radius:14px;background:{c};border:1px solid #ffffff22"></div><div style="font-size:17px;margin-top:12px">{n}</div><div style="font-size:15px;color:#7F8AA3;margin-top:4px">{c}</div></div>' for c, n in sw)}
     </div>
   </div>
-</div>'''
-p = f"{HERE}/_kimlik.html"; open(p, "w").write(page(body, 1920, 1080)); jobs.append((p, f"{HERE}/kimlik-sayfasi.png", 1920, 1080))
+</div>"""
+job("kimlik-sayfasi", body, 1920, 1080)
 
 js = f"""const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();
-for(const [f,o,w,h] of {json.dumps(jobs)}){{const p=await b.newPage({{viewport:{{width:w,height:h}},deviceScaleFactor:1}});
-await p.goto('file://'+f);await p.waitForTimeout(400);await p.screenshot({{path:o}});await p.close();}}await b.close();}})();"""
+for(const [f,o,w,h,tr] of {json.dumps(jobs)}){{const p=await b.newPage({{viewport:{{width:w,height:h}},deviceScaleFactor:1}});
+await p.goto('file://'+f);await p.waitForTimeout(400);await p.screenshot({{path:o,omitBackground:tr}});await p.close();}}await b.close();}})();"""
 open(f"{HERE}/_r.js", "w").write(js)
 subprocess.run(["node", f"{HERE}/_r.js"], check=True)
 for f in os.listdir(HERE):
     if f.startswith("_"): os.remove(f"{HERE}/{f}")
-# profil PNG'lerini yuvarlak kes (şeffaf köşe)
+# profil fotoğrafı: yuvarlak, köşeler şeffaf
 from PIL import Image, ImageDraw
-for t in THEMES:
-    im = Image.open(f"{HERE}/profil-{t}.png").convert("RGBA"); s = im.width
-    m = Image.new("L", (s * 2, s * 2)); ImageDraw.Draw(m).ellipse((0, 0, s * 2, s * 2), fill=255)
-    out = Image.new("RGBA", (s, s)); out.paste(im, (0, 0), m.resize((s, s), Image.LANCZOS)); out.save(f"{HERE}/profil-{t}-yuvarlak.png")
+im = Image.open(f"{HERE}/profil-fotografi.png").convert("RGBA"); s = im.width
+m = Image.new("L", (s * 2, s * 2)); ImageDraw.Draw(m).ellipse((0, 0, s * 2, s * 2), fill=255)
+out = Image.new("RGBA", (s, s)); out.paste(im, (0, 0), m.resize((s, s), Image.LANCZOS)); out.save(f"{HERE}/profil-fotografi.png")
+# filigran için işareti üretim araçlarına kopyala
+import shutil; shutil.copy(f"{HERE}/isaret.png", os.path.join(HERE, "..", "..", "uretim-araclari", "isaret.png"))
 print("ok")
