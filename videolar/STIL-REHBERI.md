@@ -63,3 +63,19 @@ Ayrıntılar: `HARITANIN-ARDI-TEKNIKLERI.md`
 - Yolculuk sayaçları (gün/saat/km)
 - Yıllar serif yazıyla; kanal filigranı alt ortada
 - Başlıkta somut şaşırtıcı sayı; Türkiye/Osmanlı + yolculuk konuları en çok izleniyor
+
+## 🎙️ Doğal ses kuralları (her videoda aynı tempo, AI havası yok)
+**Tempo – otomatik:** `auto_tempo.py ham.mp3 eleven.mp3` → Whisper ile ölçer, **5,9 hece/sn** hedefine getirir.
+- Sınır 0,92x–1,10x (fazlası yapay duyulur); %2'den küçük farkta dokunmaz.
+- Esnetme **rubberband** (formant korumalı). `atempo` ve göz kararı hızlandırma YASAK.
+- Ölçülen geçmiş: Kaliningrad 5,29 · Sentinel 5,37 · Süleyman 5,70→6,36 (fazla) · İstiklal 6,02→6,54 (fazla). Hepsi hedefle 5,8–6,05'e iner.
+
+**Senaryo yazımı (AI havasını en çok bu belirler):**
+- Gereksiz virgül koyma: "örttü, ve", "Adı, Kaliningrad" gibi yerler yapay duraklama yaratır. Virgül sadece doğal nefes yerine.
+- Kısa cümleler; her cümlede tek fikir. Uzun cümleyi ikiye böl.
+- Konuşma dili bağlaçları: "Peki", "Üstelik", "Yani", "Ama asıl ilginç olan…".
+- Sayılar yazıyla (seslendirme), rakamla (altyazı).
+- Soru cümleleri gerçekten soru gibi kurulsun ("…mı?" ile bitsin).
+
+**Ses işleme:** ElevenLabs çıktısına tempo dışında dokunma; kesme/sessizlik ekleme yok; -14 LUFS.
+**ElevenLabs:** "Harita seslendirme" sesi, Eleven Multilingual v2, tek versiyon.
