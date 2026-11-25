@@ -174,6 +174,7 @@ def section(img, t, a):
     pl = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     ImageDraw.Draw(pl).polygon([(W * .42, max(0, pit + 900)), (W * .58, max(0, pit + 900)), (W * .60, H), (W * .40, H)], fill=(0, 0, 0, 55))
     lay.alpha_composite(pl); d = ImageDraw.Draw(lay)
+    ob = Image.new("RGBA", (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(ob)   # nesneler ayrı katmanda (yarı saydamlık delik açmasın)
     # gemiler (kelimeyle birer birer)
     t_sh = cue("ships", "37", "otuz", "batık")
     n_sh = int(37 * smooth((t - t_sh) / 2.2)) if t > t_sh else 0
@@ -191,6 +192,7 @@ def section(img, t, a):
     for k, (x, dy, left) in enumerate(STEPS):
         ak = sine_out((t - t_fp - k * .22) / .35) if t > t_fp else 0
         if ak > 0: foot(d, x, dy - top + 600 * SS, 1.3, a * ak, left)
+    lay.alpha_composite(ob)
     if a < 1: lay.putalpha(lay.getchannel("A").point(lambda v: int(v * a)))
     img.alpha_composite(lay)
     # derinlik/yıl sayacı (sağ kenar)
