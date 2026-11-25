@@ -36,3 +36,9 @@ YouTube Studio'dan: izlenme, **ortalama izlenme yüzdesi**, **"kaydırıp geçen
 ## Kaynak sınırı
 ElevenLabs ücretsiz plan: 10.000 kredi/ay ≈ 12 Shorts, uzun video yok. Krediler 24 Aralık'ta yenilenir.
 Haftada 2 Shorts + ayda 1 uzun video için **Starter planı (~5 $/ay, 30.000 kredi)** gerekli.
+
+## Ölçüm kayıtları
+| Video | Süre | İzlemeyi seçenler | Ort. izleme | Ort. % | Abone | Not |
+|---|---|---|---|---|---|---|
+| Mısır sınırları | 1:10 | %61,9 | 0:44 | ~%63 | +2 (2,8 bin izl.) | Eski format: 0,4 sn sessiz giriş, yavaş ses. Referans çizgi. |
+Hedef: izlemeyi seçenler %70+, ortalama %80+ → videolar 40–45 sn, ses 0,0 sn'de başlar (Van ve Ağrı bu kurala uygun).
