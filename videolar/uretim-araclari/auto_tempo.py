@@ -1,12 +1,12 @@
 """Seslendirmeyi kanalın standart hızına getirir (her videoda aynı, doğal tempo).
 Kullanım: python3 auto_tempo.py giris.mp3 cikis.mp3 [whisper_python]
 - Hız ölçümü: Whisper kelime zamanlarıyla hece/sn (Türkçe: ünlü sayısı), duraklar dahil genel tempo.
-- Hedef: 5.9 hece/sn. Değişim sınırı: 0.92x – 1.10x (fazlası yapay duyulur).
+- Hedef: 5.9 hece/sn. Değişim sınırı: 0.95x – 1.05x (fazlası yapay duyulur).
 - Esnetme: ffmpeg rubberband (formant korumalı, yüksek kalite) – atempo KULLANMA.
 - Değişim %2'den küçükse dokunmaz."""
 import json, subprocess, sys, os
 
-TARGET, LO, HI = 5.9, 0.92, 1.10
+TARGET, LO, HI = 5.9, 0.95, 1.05   # profesyonel seslerde fazla esnetme yapaylık katar
 VOW = set("aeıioöuüAEIİOÖUÜâîû")
 src, dst = sys.argv[1], sys.argv[2]
 py = sys.argv[3] if len(sys.argv) > 3 else "python3"

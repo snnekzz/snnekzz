@@ -19,7 +19,7 @@ Her yeni videoda bu listeyi uygula. Kaynak: kendi deneyimlerimiz + Haritalogy ka
 - Başlık kutusu sadece ilk 5–6 saniye.
 
 ## ✅ Ses
-- Seslendirme: ElevenLabs, aynı ses, Eleven Multilingual v2, Stability %40.
+- Seslendirme: ElevenLabs, **Emrullah** (profesyonel Türkçe ses, `DpEiQMnL9WxMsymCsjPY`), model eleven_v4. Yenikapı'dan itibaren tüm videolarda bu ses.
 - **Geçiş sesleri sadece yumuşak ve kısık:** tizleri kesilmiş "nefes" sesi. Whoosh/pop gibi keskin sesler YOK.
 - Efektler konuşmanın çok altında; kritik anda kısa sessizlik + alçak "boom".
 - Müzik: telifsiz, kodla üretilen drone/pad; konuşma sırasında otomatik kısılır.
@@ -66,7 +66,7 @@ Ayrıntılar: `HARITANIN-ARDI-TEKNIKLERI.md`
 
 ## 🎙️ Doğal ses kuralları (her videoda aynı tempo, AI havası yok)
 **Tempo – otomatik:** `auto_tempo.py ham.mp3 eleven.mp3` → Whisper ile ölçer, **5,9 hece/sn** hedefine getirir.
-- Sınır 0,92x–1,10x (fazlası yapay duyulur); %2'den küçük farkta dokunmaz.
+- Sınır 0,95x–1,05x (fazlası yapay duyulur; Emrullah doğal olarak ~4,4 hece/sn, sakin anlatım – zorla hızlandırma); %2'den küçük farkta dokunmaz.
 - Esnetme **rubberband** (formant korumalı). `atempo` ve göz kararı hızlandırma YASAK.
 - Ölçülen geçmiş: Kaliningrad 5,29 · Sentinel 5,37 · Süleyman 5,70→6,36 (fazla) · İstiklal 6,02→6,54 (fazla). Hepsi hedefle 5,8–6,05'e iner.
 
@@ -78,7 +78,7 @@ Ayrıntılar: `HARITANIN-ARDI-TEKNIKLERI.md`
 - Soru cümleleri gerçekten soru gibi kurulsun ("…mı?" ile bitsin).
 
 **Ses işleme:** ElevenLabs çıktısına tempo dışında dokunma; kesme/sessizlik ekleme yok; -14 LUFS.
-**ElevenLabs:** "Harita seslendirme" sesi, Eleven Multilingual v2, tek versiyon.
+**ElevenLabs:** Emrullah sesi, eleven_v4, tek versiyon (~680 kredi / video).
 
 ## 🏷️ Marka ve koruma (HER videoda zorunlu)
 Modül: `uretim-araclari/brand.py`
