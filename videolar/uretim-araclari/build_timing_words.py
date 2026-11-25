@@ -5,7 +5,7 @@ Kontrol: eşleşmeyen kelime oranı yüksekse hata verir."""
 import json, re, wave, difflib, subprocess, numpy as np
 from script import SEGMENTS
 
-LEAD, TAIL, SR = 0.4, 1.8, 44100
+LEAD, TAIL, SR = 0.05, 1.8, 44100   # ses videonun başında başlar (kanca hemen)
 def norm(w):
     w = w.replace("İ", "i").replace("I", "ı").lower()
     w = re.sub(r"[’'`]", "", w); w = re.sub(r"[^\wçğıöşü]", "", w)

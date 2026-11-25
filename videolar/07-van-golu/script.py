@@ -1,0 +1,22 @@
+# Video 7: Van Gölü – tek balık türü, sodalı su, kefal göçü, mikrobiyalit kuleler. (seslendirme, altyazı, sahne, boşluk)
+SEGMENTS = [
+    ("Türkiye'nin en büyük gölünde sadece tek bir balık türü yaşıyor.",
+     "Türkiye'nin en büyük gölünde sadece tek bir balık türü yaşıyor.", "intro", 0),
+    ("Üstelik göl kocaman: tam üç bin yedi yüz kilometrekare.", "Üstelik göl kocaman: tam 3.700 km².", "size", 0),
+    ("Peki diğer balıklar neden burada yaşayamıyor?", "Peki diğer balıklar neden burada yaşayamıyor?", "question", 0),
+    ("Cevap suyun içinde.", "Cevap suyun içinde.", "answer", 0),
+    ("Van Gölü'nün hiçbir çıkışı yok.", "Van Gölü'nün hiçbir çıkışı yok.", "outlet", 0),
+    ("Nehirlerin getirdiği su sadece buharlaşıyor, sodası ise kalıyor.",
+     "Nehirlerin getirdiği su sadece buharlaşıyor, sodası ise kalıyor.", "evap", 0),
+    ("Su öyle sabunsu ki eskiden çamaşırlar bu suyla sabunsuz yıkanırmış.",
+     "Su öyle sabunsu ki eskiden çamaşırlar bu suyla sabunsuz yıkanırmış.", "soap", 0),
+    ("Bu suya sadece inci kefali dayanabiliyor.", "Bu suya sadece inci kefali dayanabiliyor.", "fish", 0),
+    ("Ama yumurtasını burada bırakamıyor.", "Ama yumurtasını burada bırakamıyor.", "spawn", 0),
+    ("Her bahar binlercesi akıntıya karşı nehirlere tırmanıyor.",
+     "Her bahar binlercesi akıntıya karşı nehirlere tırmanıyor.", "migrate", 0),
+    ("Ve gölün dibinde daha tuhaf bir şey var.", "Ve gölün dibinde daha tuhaf bir şey var.", "deeper", 0),
+    ("Bakterilerin ördüğü, kırk metrelik kuleler.", "Bakterilerin ördüğü, 40 metrelik kuleler.", "towers", 0),
+    ("On üç katlı bir bina kadar!", "13 katlı bir bina kadar!", "building", 0),
+    ("Sence Van Gölü'nün başka hangi sırrı var? Yorumlara yaz!",
+     "Sence Van Gölü'nün başka hangi sırrı var? Yorumlara yaz!", "cta", 0),
+]
