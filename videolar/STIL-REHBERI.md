@@ -77,7 +77,10 @@ Ayrıntılar: `HARITANIN-ARDI-TEKNIKLERI.md`
 - Sayılar yazıyla (seslendirme), rakamla (altyazı).
 - Soru cümleleri gerçekten soru gibi kurulsun ("…mı?" ile bitsin).
 
-**Ses işleme:** ElevenLabs çıktısına tempo dışında dokunma; kesme/sessizlik ekleme yok; -14 LUFS.
+**Ses işleme:** Kesme/sessizlik ekleme yok; -14 LUFS.
+- **Emrullah EQ (zorunlu):** ham çıktı boğuk/odada gibi ("banyo yankısı") geliyor → `uretim-araclari/voice_eq_emrullah.txt` zincirini uygula: 350 Hz kutu tınısı −4 dB, 3,2 kHz +2,5 dB, 6 kHz üstü +5 dB, hafif kapı (aralardaki oda kuyruğunu kısar).
+- **Emrullah'ta hız esnetme YOK** (rubberband oyuk tını ekliyor). Doğal temposu ~4,4 hece/sn; senaryoyu kısa tut (~650 karakter ≈ 53 sn).
+- Geçiş sesi kazancı .15 (aktif konuşmanın ~5,5 dB altı).
 **ElevenLabs:** Emrullah sesi, eleven_v4, tek versiyon (~680 kredi / video).
 
 ## 🏷️ Marka ve koruma (HER videoda zorunlu)

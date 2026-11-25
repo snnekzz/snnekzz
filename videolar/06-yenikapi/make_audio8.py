@@ -46,7 +46,7 @@ def thud():
     tt = np.arange(int(.6 * SR)) / SR; return np.sin(2 * np.pi * (48 + 50 * np.exp(-tt * 14)) * tt) * np.exp(-tt * 7)
 roots = [52, 55, 50, 57, 52, 48, 55, 52, 50, 57]
 for k, sc in enumerate(("really", "dig", "harbor", "ships", "cargo", "deeper", "footprints", "older", "delay", "cta")):
-    add(soft_swell(roots[k % len(roots)]), st(sc) - .9, .22)
+    add(soft_swell(roots[k % len(roots)]), st(sc) - .9, .15)
 add(thud(), st("dig") + .4, .18)            # kazı başlıyor
 add(thud(), st("deeper") + .2, .18)         # daha derine
 sfx *= np.convolve(np.where(e_ > .01, .8, 1.0), np.ones(int(.2 * SR)) / int(.2 * SR), mode="same").astype(np.float32)
@@ -54,6 +54,6 @@ mix = voice + music + sfx; mix /= max(1.0, np.max(np.abs(mix)) / .95)
 with wave.open("mix_raw.wav", "wb") as w:
     w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR); w.writeframes((np.stack([mix, mix], 1) * 32767).astype(np.int16).tobytes())
 subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", "mix_raw.wav", "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-ar", "48000", "mix.wav"], check=True)
-sw = soft_swell() * .22 * .8
+sw = soft_swell() * .15 * .8
 print("ok", round(TOT, 2), "| geçiş", round(20 * np.log10(np.sqrt(np.mean(sw[int(.6 * SR):int(1.2 * SR)] ** 2)) + 1e-9), 1), "dB | konuşma",
       round(20 * np.log10(np.sqrt(np.mean(voice[voice != 0] ** 2)) + 1e-9), 1), "dB")
