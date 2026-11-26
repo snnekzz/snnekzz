@@ -323,21 +323,21 @@ def hose_scene(img, t):
     for _ in range(80):
         x, y, r = r0.uniform(0, W), (r0.uniform(0, H) - t * 60 * SS) % H, r0.uniform(2, 6) * SS
         d.ellipse((x - r, y - r, x + r, y + r), fill=(200, 230, 255, 60))
-    cx, cy = W * .30, 1100 * SS; g = smooth((t - st("hose") + .2) / .8)
+    cx, cy = W * .29, 1100 * SS; g = smooth((t - st("hose") + .2) / .8)
     layers = [(300, (25, 25, 28), "polietilen"), (250, (120, 125, 135), "çelik teller"), (180, (190, 120, 60), "bakır"), (120, (40, 45, 60), "dolgu"), (60, (230, 240, 255), "fiber")]
     for r, c, _ in layers:
-        d.ellipse((cx - r * SS * g, cy - r * SS * g, cx + r * SS * g, cy + r * SS * g), fill=c + (255,), outline=(0, 0, 0, 255), width=3 * SS)
+        d.ellipse((cx - r * SS * g * .7, cy - r * SS * g * .7, cx + r * SS * g * .7, cy + r * SS * g * .7), fill=c + (255,), outline=(0, 0, 0, 255), width=3 * SS)
     for k in range(28):
-        an = k / 28 * 2 * math.pi; rr = 215 * SS * g
-        d.ellipse((cx + math.cos(an) * rr - 16 * SS * g, cy + math.sin(an) * rr - 16 * SS * g, cx + math.cos(an) * rr + 16 * SS * g, cy + math.sin(an) * rr + 16 * SS * g), fill=(170, 175, 185, 255))
+        an = k / 28 * 2 * math.pi; rr = 215 * SS * g * .7
+        d.ellipse((cx + math.cos(an) * rr - 16 * SS * g * .7, cy + math.sin(an) * rr - 16 * SS * g * .7, cx + math.cos(an) * rr + 16 * SS * g * .7, cy + math.sin(an) * rr + 16 * SS * g * .7), fill=(170, 175, 185, 255))
     for k in range(8):
         an = k / 8 * 2 * math.pi
-        d.ellipse((cx + math.cos(an) * 30 * SS * g - 9 * SS, cy + math.sin(an) * 30 * SS * g - 9 * SS, cx + math.cos(an) * 30 * SS * g + 9 * SS, cy + math.sin(an) * 30 * SS * g + 9 * SS), fill=GLOW + (255,))
+        d.ellipse((cx + math.cos(an) * 30 * SS * g * .7 - 9 * SS, cy + math.sin(an) * 30 * SS * g * .7 - 9 * SS, cx + math.cos(an) * 30 * SS * g * .7 + 9 * SS, cy + math.sin(an) * 30 * SS * g * .7 + 9 * SS), fill=GLOW + (255,))
     t_h = cue("hose", "hortumu", "bahçe")
     if t > t_h:
-        hx, gg = W * .76, pop(t, t_h)
-        d.ellipse((hx - 280 * SS * gg, cy - 280 * SS * gg, hx + 280 * SS * gg, cy + 280 * SS * gg), fill=(40, 170, 70, 255), outline=(10, 60, 20, 255), width=6 * SS)
-        d.ellipse((hx - 215 * SS * gg, cy - 215 * SS * gg, hx + 215 * SS * gg, cy + 215 * SS * gg), fill=(10, 20, 30, 255))
+        hx, gg = W * .73, pop(t, t_h)
+        d.ellipse((hx - 280 * SS * gg * .7, cy - 280 * SS * gg * .7, hx + 280 * SS * gg * .7, cy + 280 * SS * gg * .7), fill=(40, 170, 70, 255), outline=(10, 60, 20, 255), width=6 * SS)
+        d.ellipse((hx - 215 * SS * gg * .7, cy - 215 * SS * gg * .7, hx + 215 * SS * gg * .7, cy + 215 * SS * gg * .7), fill=(10, 20, 30, 255))
     if a < 1: lay.putalpha(lay.getchannel("A").point(lambda v: int(v * a)))
     img.alpha_composite(lay)
     ytag(img, cx, cy + 380 * SS, "DENİZ ALTI KABLOSU", a * g, 44, bg=CYAN)
