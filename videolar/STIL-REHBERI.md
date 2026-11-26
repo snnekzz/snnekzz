@@ -23,7 +23,7 @@ Her yeni videoda bu listeyi uygula. Kaynak: kendi deneyimlerimiz + Haritalogy ka
 - **Geçiş sesleri sadece yumuşak ve kısık:** tizleri kesilmiş "nefes" sesi. Whoosh/pop gibi keskin sesler YOK.
 - Efektler konuşmanın çok altında; kritik anda kısa sessizlik + alçak "boom".
 - Müzik: telifsiz, kodla üretilen drone/pad; konuşma sırasında otomatik kısılır.
-- Ses seviyesi: -14 LUFS (YouTube standardı).
+- Ses seviyesi: -14 LUFS (YouTube standardı). **İki geçişli loudnorm** kullan (ölç → linear=true); tek geçiş ~1,5 dB eksik bırakıyordu (07–08 ≈ −15 LUFS).
 
 ## ❌ Yapılan hatalar (tekrarlama)
 - **Eskimiş bilgi (Van Gölü):** "tek balık türü" dedik; 2020–2021'de ikinci tür (Van Gölü küçük mercan balığı) tescillenmişti. **Her konuda doğrulamaya ek olarak "<konu> yeni keşif / yeni tür / son yıllar" araması yap.** "Sadece / tek / hiç" gibi mutlak ifadeleri ayrıca kontrol et.
