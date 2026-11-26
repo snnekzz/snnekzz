@@ -47,3 +47,17 @@ Tanıtım: "Tarihin 'hadi ya' dedirten yerleri, haritada ⏱ 60 saniyede bir sef
 3. **Çok video ≠ büyüme:** 86 Shorts, medyan 2,6 bin; son videolar 1 bin civarında. Genel bilgi tonundaki konular (Karadeniz göldü, Kapadokya volkanik) tutmamış → konu tek başına yetmiyor, **insan/olay/sayı** gerekli.
 4. Aynı konular dönüyor (Yenikapı, Hatay, Kadıköy körler – Haritanın Ardı'dan da). Yenikapı konusu iki kanalda kanıtlanmış (95 bin / 609 ilk 3 saat).
 5. **Plan düzeltmesi:** "İstanbul Boğazı nasıl oluştu?" genel bilgi tonunda kalırsa zayıf (Meridyen'in Karadeniz videosu 1,1 bin). İnsan/olay çerçevesi gerekli: ör. "7.500 yıl önce Karadeniz kıyısındaki köyler bir anda sular altında kaldı mı?" (bilimsel tartışma olduğu açıkça söylenerek).
+
+## Ek: Sinan Dündoğan (26.11.2026) – komşu niş (bilim/teknoloji/gündem)
+12,8 bin abone · 159 Shorts (toplam ~6,2 M, **medyan 3,6 bin**) · 83 uzun video (toplam ~0,66 M, **medyan 546**).
+Tanıtım: "Ne oldu, nasıl oldu, neden önemli?"
+
+**Hitleri:** Antalya'daki cerrah Çin'deki hastayı ameliyat etti (908 bin) · Okyanus tabanına internet kabloları nasıl döşenir? (396 bin) · Sıfır yakıtla çalışan dev kamyon (349 bin) · Telefonun güç tuşuna 5 kez basınca ne olur? (312 bin) · Galatasaray'ın zemin sorunu (Shorts 216 bin, **uzun video 338 bin**) · Yerli navigasyon (212 bin).
+**Tutmayanlar:** genel/zamansız uzun videolar – kuantum bilgisayar 43, okyanusun dibinde 10 tuhaf şey 244, Sahra ağaçlanırsa 235.
+
+**Dersler:**
+1. **Gündem + Türkiye + "vay be"** en güçlü karışım (Antalya ameliyatı 908 bin).
+2. **"Nasıl çalışır?" merakı + izleyicinin hayatına dokunma** (telefon, internet) büyük izleniyor.
+3. **Uzun videoda sadece güncel/tartışmalı soru tutuyor** (Galatasaray zemin krizi, Google siteleri öldürüyor). Zamansız genel uzun videolar 50–500 izlenmede kalıyor → bizim özel uzun videolarımız "güncel soru" çerçevesinde olmalı.
+4. Çok Shorts ≠ büyüme (159 Shorts, medyan 3,6 bin) – üçüncü kez aynı bulgu.
+5. **Bize uyarlanacak konu:** "Türkiye'nin interneti denizin altından geliyor: Kablolar nereden geçiyor?" (onun 396 bin izlenen kablo videosu + harita animasyonu + Türkiye köprüsü).

@@ -3,7 +3,7 @@ Dayanak: RAKIP-ANALIZI.md, HARITANIN-ARDI-TEKNIKLERI.md, HARITALOGY-TEKNIKLERI.m
 
 ## Karar: Shorts motor, uzun video abone motoru
 - **Shorts (haftada 2):** izlenme ve keşfedilme. Üretim hattımız hazır, kalite rakiplerle aynı ligde.
-- **Uzun video (ayda 1, 16:9, 5–8 dk):** abone ve gelir. Rakiplerde 800 bin+ abone hep uzun videoyla geldi.
+- **Uzun video (ayda 1, 16:9, 5–8 dk):** abone ve gelir. Özel uzun videolar **güncel/tartışmalı bir soru** etrafında kurulmalı (zamansız genel uzun videolar rakiplerde 50–500 izlenmede kalıyor). Rakiplerde 800 bin+ abone hep uzun videoyla geldi.
   Shorts'lardan "İlgili video" bağlantısıyla uzun videoya yönlendir.
 
 ## Konu seçme kuralları (her video bu 4 testten geçmeli)
@@ -24,6 +24,7 @@ Dayanak: RAKIP-ANALIZI.md, HARITANIN-ARDI-TEKNIKLERI.md, HARITALOGY-TEKNIKLERI.m
 | Aralık 3. hafta | Shorts | **Kuruluş Osman'daki Söğüt gerçekte nerede?** | Popüler kültür köprüsü |
 | Aralık sonu | **Uzun** | **"Haritaların Bilinmeyen 8 Sırrı"** – ilk 8 Shorts'tan 16:9 derleme | Seslendirme kredisi gerektirmez; abone motorunu başlatır |
 | Ocak 1. hafta | Shorts | Osmanlı'da İstanbul–Bağdat posta yolu kaç gün? | Yolculuk + Osmanlı (Haritanın Ardı'nın en güçlü türü) |
+| Ocak | Shorts | **Türkiye'nin interneti denizin altından geliyor: kablolar nereden geçiyor?** | Sinan Dündoğan'ın 396 bin izlenen kablo konusu + harita + Türkiye köprüsü |
 
 Not: Her konunun rakamları üretim öncesi kaynaklardan doğrulanır (Ağrı'daki gibi).
 
