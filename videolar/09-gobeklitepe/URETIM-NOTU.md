@@ -28,7 +28,7 @@
 ## Tamamlandı (26.11.2026)
 - Ses: Emrullah, eleven_v4, tek versiyon (kullanıcının ikinci ElevenLabs hesabında web arayüzünden üretildi, mp3 olarak yüklendi) → EQ (voice_eq.txt) → `gobeklitepe-shorts.mp4`.
 - Ses seviyesi: iki geçişli loudnorm → ~−14 LUFS, TP ≤ −1,1 dBTP (make_audio artık iki geçişli).
-- Altyazı-ses senkronu (bitmiş videonun sesi Whisper ile yeniden ölçüldü): ortalama sapma {SYNC}, 150 ms üstü sapma yok.
+- Altyazı-ses senkronu (bitmiş videonun sesi Whisper ile yeniden ölçüldü): ortalama sapma +4 ms, 150 ms üstü sapma yok.
 - Kapaklar: `kapak-dikey.jpg` (1080x1920), `kapak-yatay.jpg` (1280x720) – betik `kapak9.py` (+ harita-motoru/kapak_ortak.py).
 - Paylaşım metinleri: `paylasim-bilgileri.md`.
 - Düzeltmeler: (1) Yeni Pillow'da taş yükselme anında ters dikdörtgen hatası → korumalı. (2) "PİRAMİTLERDEN" vurgu kutusu beyaz-üstüne-beyazdı (görünmüyordu) → açık renkli kutularda siyah yazı (sum(bg) > 500, 10/11 ile aynı kural).
