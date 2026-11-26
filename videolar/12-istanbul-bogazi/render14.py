@@ -205,7 +205,7 @@ def map_overlays(img, cam, t):
         for i in range(0, len(lo) - 1, 3): d.line([lo[i], lo[min(len(lo) - 1, i + 2)]], fill=A(SALT, a_d * .6), width=int(8 * SS))
         flow_particles(d, lo, t, a_d, SALT, .09, 18, rev=False, r=13, tail=12, phase=.37)
     # deniz altı nehri
-    t_n = cue("river", "dibinde", "deniz")
+    t_n = cue("river", "girince", "durmuyor")
     a_n = vis(t, st("river") - .1, en("river") + .3, .5, .5)
     if a_n > 0:
         dark = Image.new("RGBA", (W, H), (4, 10, 30, int(120 * smooth((t - st("river")) / 1.0) * a_n)))

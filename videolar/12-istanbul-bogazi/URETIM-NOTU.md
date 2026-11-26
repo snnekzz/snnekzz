@@ -1,4 +1,4 @@
-# Video 12: İstanbul Boğazı – TASLAK (seslendirme bekliyor, 26.11.2026)
+# Video 12: İstanbul Boğazı – TAMAMLANDI (26.11.2026)
 
 ## Seslendirme metni (ElevenLabs'e aynen)
 `elevenlabs_metin.txt` (814 karakter ≈ 45 sn; Emrullah, eleven_v4, tek versiyon)
@@ -19,3 +19,10 @@ eleven_orig.mp3 → EQ (voice_eq.txt) → eleven.mp3 → words.py → build_timi
 
 ## Doğrulama
 Bkz. `paylasim-bilgileri.md` → Bilgi kaynakları. Mutlak ifade kontrolü: "aynı anda iki ters yöne" (genel rejim; meteorolojik koşullarda zaman zaman tek yönlü olabilir → açıklamada sorun yok, videoda genel durum anlatılıyor).
+
+## Tamamlandı (26.11.2026)
+- Ses: Emrullah, eleven_v4, tek versiyon (Starter hesabı, 757 kredi, 47,4 sn) → EQ → `istanbul-bogazi-shorts.mp4` (49,2 sn).
+- Ses seviyesi: −14,5 LUFS, TP −1,8 dBTP (`harita-motoru/ln2.py mix_raw.wav mix.wav -2.2`: AAC sonrası tepe −1,5 hedefini aşıyordu → −2,2).
+- Senkron (bitmiş videonun sesi Whisper ile): ortalama −5 ms, 150 ms üstü 1 kelime.
+- Düzeltmeler: nehir artık "girince/durmuyor" kelimesinde çizilmeye başlıyor (31–34 sn ölü an giderildi; yalnızca 740. kareden sonrası yeniden render edildi); nehir→büyüklük geçişinde sayaç çakışması.
+- Kapaklar: kapak-dikey.jpg, kapak-yatay.jpg (kapak12.py).
