@@ -1,0 +1,21 @@
+# Video 10: Derinkuyu yeraltı şehri. (seslendirme, altyazı, sahne, boşluk)
+SEGMENTS = [
+    ("Bin dokuz yüz altmış üçte Nevşehir'de bir adam evini tamir ederken bir duvarı yıktı.",
+     "1963'te Nevşehir'de bir adam evini tamir ederken bir duvarı yıktı.", "intro", 0),
+    ("Duvarın arkasında yerin altına inen bir tünel vardı.", "Duvarın arkasında yerin altına inen bir tünel vardı.", "tunnel", 0),
+    ("Peki bu tünel nereye çıkıyordu?", "Peki bu tünel nereye çıkıyordu?", "question", 0),
+    ("Koca bir şehre. Burası Derinkuyu.", "Koca bir şehre. Burası Derinkuyu.", "city", 0),
+    ("Şehir yerin seksen beş metre altına iniyor. Bu, yaklaşık yirmi sekiz katlı bir bina derinliği.",
+     "Şehir yerin 85 metre altına iniyor. Bu, yaklaşık 28 katlı bir bina derinliği.", "depth", 0),
+    ("İçine hayvanlarıyla birlikte yirmi bin kişinin sığabildiği tahmin ediliyor.",
+     "İçine hayvanlarıyla birlikte 20.000 kişinin sığabildiği tahmin ediliyor.", "people", 0),
+    ("Ahırlar, kuyular, şarap mahzenleri, kiliseler. Hepsi kayaya oyulmuş.",
+     "Ahırlar, kuyular, şarap mahzenleri, kiliseler. Hepsi kayaya oyulmuş.", "rooms", 0),
+    ("Düşman geldiğinde girişler, içeriden yarım tonluk yuvarlak taşlarla kapatılıyordu.",
+     "Düşman geldiğinde girişler, içeriden yarım tonluk yuvarlak taşlarla kapatılıyordu.", "doors", 0),
+    ("Üstelik her kat ayrı ayrı kapatılabiliyordu.", "Üstelik her kat ayrı ayrı kapatılabiliyordu.", "levels", 0),
+    ("Bir tünelle komşu yeraltı şehri Kaymaklı'ya bile bağlanıyordu.", "Bir tünelle komşu yeraltı şehri Kaymaklı'ya bile bağlanıyordu.", "kaymakli", 0),
+    ("Bugün ziyaretçiler şehrin sadece bir kısmını görebiliyor.", "Bugün ziyaretçiler şehrin sadece bir kısmını görebiliyor.", "more", 0),
+    ("Sence insanlar yerin altına neden bu kadar derin indi? Yorumlara yaz!",
+     "Sence insanlar yerin altına neden bu kadar derin indi? Yorumlara yaz!", "cta", 0),
+]

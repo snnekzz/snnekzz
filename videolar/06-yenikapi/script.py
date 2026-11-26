@@ -1,0 +1,23 @@
+# Video 6: Yenikapı – Marmaray kazısı. (seslendirme, altyazı, sahne, boşluk)
+SEGMENTS = [
+    ("İstanbul'da metro kazarken toprağın altından otuz yedi gemi çıktı.",
+     "İstanbul'da metro kazarken toprağın altından 37 gemi çıktı.", "intro", 0),
+    ("Evet, gerçek gemiler.", "Evet, gerçek gemiler.", "really", 0),
+    ("Yıl iki bin dört. Marmaray tüneli için Yenikapı'da büyük bir kazı başladı.",
+     "Yıl 2004. Marmaray tüneli için Yenikapı'da büyük bir kazı başladı.", "dig", 0),
+    ("İşçiler birkaç metre inince Bizans'tan kalma bir liman buldu. Theodosius Limanı.",
+     "İşçiler birkaç metre inince Bizans'tan kalma bir liman buldu: Theodosius Limanı.", "harbor", 0),
+    ("Limanın çamurunda tam otuz yedi batık gemi yatıyordu.",
+     "Limanın çamurunda tam 37 batık gemi yatıyordu.", "ships", 0),
+    ("Bazıları bin beş yüz yıllıktı. Bazılarının yükü bile hâlâ içindeydi.",
+     "Bazıları 1.500 yıllıktı. Bazılarının yükü bile hâlâ içindeydi.", "cargo", 0),
+    ("Ama asıl şaşırtıcı olan daha derindeydi.", "Ama asıl şaşırtıcı olan daha derindeydi.", "deeper", 0),
+    ("Kazı ilerledikçe sekiz bin yıl önce burada yaşamış insanların ayak izleri bulundu.",
+     "Kazı ilerledikçe 8.000 yıl önce burada yaşamış insanların ayak izleri bulundu.", "footprints", 0),
+    ("Yani İstanbul'un tarihi, bildiğimizden binlerce yıl daha eskiymiş.",
+     "Yani İstanbul'un tarihi, bildiğimizden binlerce yıl daha eskiymiş.", "older", 0),
+    ("Bu buluşlar yüzünden Marmaray'ın açılışı yıllarca ertelendi.",
+     "Bu buluşlar yüzünden Marmaray'ın açılışı yıllarca ertelendi.", "delay", 0),
+    ("Sence İstanbul'un altında daha neler saklı? Yorumlara yaz!",
+     "Sence İstanbul'un altında daha neler saklı? Yorumlara yaz!", "cta", 0),
+]
