@@ -223,14 +223,14 @@ def globe_layer(t):
         pr = smooth((t - t_m) / 2.6)
         gline(d, SMW5, lon0, lat0, R, a_m, pr, CYAN, 7, 5 if pr >= 1 else 0, t)
         gline(d, MARM_BR, lon0, lat0, R, a_m, 1, YEL, 7)
-    # 27 tur: ekvatorda dönen ışık
-    t_w = cue("world", "27", "yirmi", "dolanırdık")
+    # 35+ tur: ekvatorda dönen ışık
+    t_w = cue("world", "35", "otuz", "dolanırdık")
     a_w = vis(t, st("world") - .2, en("world") + .3, .4, .4)
     if a_w > 0:
         eq = [(lo, 0) for lo in range(-180, 181, 4)]
         gline(d, eq, lon0, lat0, R, a_w * .9, 1, YEL, 5)
         if t > t_w:
-            laps = 27 * smooth((t - t_w) / 2.4); lo = (laps * 360) % 360 - 180
+            laps = 35 * smooth((t - t_w) / 2.4); lo = (laps * 360) % 360 - 180
             for k in range(8):
                 x, y, v = gproj(lo - k * 6, 0, lon0, lat0, R)
                 if v: d.ellipse((x - (16 - k) * SS, y - (16 - k) * SS, x + (16 - k) * SS, y + (16 - k) * SS), fill=A(WHITE, a_w * (1 - k / 8)))
@@ -242,9 +242,9 @@ def globe_layer(t):
         t_km = cue("marmaris", "20000", "yirmi", "kilometre")
         ytag(img, W / 2, 1520 * SS, f"{trnum(20000 * smooth((t - t_m) / 2.6))} km", a_m * vis(t, t_m, en("marmaris") + .4, .3, .4), 72, sc=pop(t, t_km))
     if a_w > 0:
-        laps = int(27 * smooth((t - t_w) / 2.4)) if t > t_w else 0
-        ytag(img, W / 2, 1450 * SS, f"{laps} TUR", a_w * vis(t, t_w, en("world") + .3, .3, .4), 80, sc=pop(t, t_w))
-        ytag(img, W / 2, 560 * SS, "1,1 MİLYON KM KABLO", a_w * vis(t, st("world") + .2, en("world") + .3, .3, .4), 50, bg=WHITE)
+        laps = int(35 * smooth((t - t_w) / 2.4)) if t > t_w else 0
+        ytag(img, W / 2, 1450 * SS, f"{laps}+ TUR" if laps >= 35 else f"{laps} TUR", a_w * vis(t, t_w, en("world") + .3, .3, .4), 80, sc=pop(t, t_w))
+        ytag(img, W / 2, 560 * SS, "1,4 MİLYON KM+ KABLO", a_w * vis(t, st("world") + .2, en("world") + .3, .3, .4), 50, bg=WHITE)
     return img
 
 def flat_overlays(img, cam, fp, t):

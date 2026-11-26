@@ -1,4 +1,4 @@
-# Video 9: Göbeklitepe – TASLAK (seslendirme bekliyor)
+# Video 9: Göbeklitepe – TASLAK (seslendirme bekliyor – ElevenLabs kredisi yok, 26.11.2026)
 
 Durum: senaryo + animasyon hazır, geçici (Piper) sesle zamanlama test edildi. Yayın sesi Emrullah ile üretilecek (~733 kredi, krediler 24 Aralık'ta yenilenir).
 
@@ -20,3 +20,8 @@ Durum: senaryo + animasyon hazır, geçici (Piper) sesle zamanlama test edildi. 
 - "Önce tapınak sonra tarım" Schmidt'in yorumu; bugünkü kazı ekibi yerleşim olarak yorumluyor → videoda "olabilir".
 - Jeofizik taramalar: en az 200 dikilitaş daha toprağın altında.
 - Kesit/sahne çizimleri temsilidir.
+
+## Yeni keşif kontrolü (26.11.2026)
+- Eylül 2025: duvara gömülü gerçek boyutlu insan heykeli bulundu (Bakan Ersoy). Ekim 2025: yer altı taramaları höyüğün doğu/güneyinde dörtgen konut izleri gösterdi. 2026: kazı ilk kez kuzey kesimde.
+- Etkisi: "önce tapınak" yorumu tartışmalı → metindeki "olabilir" ifadesi korunuyor. "ne tarlası" doğru (yabani tahıl işlendi, evcil tarım yok).
+- "en az iki yüz dikilitaş" jeofizik tahmin; mutlak ifade yok.
