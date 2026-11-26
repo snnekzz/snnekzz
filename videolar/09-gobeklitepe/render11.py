@@ -147,7 +147,7 @@ def caption_top(img, t):
         ec = ENT.get(_n(c["words"][i]).replace("²", "²"))
         if ec is None and re.sub(r"[^\d]", "", c["words"][i]): ec = YEL
         if i == cur:
-            bg = ec or BLUE; fg = BLACK if bg == YEL else WHITE
+            bg = ec or BLUE; fg = BLACK if sum(bg) > 500 else WHITE
             d.rounded_rectangle((x - 12 * SS, y - size * .62, x + ws[i] + 12 * SS, y + size * .58), radius=int(10 * SS), fill=bg + (255,))
             d.text((x, y), w, font=f, fill=fg, anchor="lm")
         else:
