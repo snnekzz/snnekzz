@@ -242,7 +242,7 @@ def map_overlays(img, cam, t):
         q = pj(cam, *NEHIR[len(NEHIR) // 2])
         if q: typetag(img, q[0] + 300 * SS, q[1], "DENİZ ALTI NEHRİ", t, t_n + .2, a_n, 50, bg=SALT)
         km = 60 * smooth((t - t_n) / 2.6)
-        stamp_text(img, f"{int(round(km))} KM", (W * .30, 1020 * SS), FA, 150, fill=YEL, stroke=BLACK, alpha=a_n * sine_out((t - t_n) / .4))
+        stamp_text(img, f"{int(round(km))} KM", (W * .30, 1020 * SS), FA, 150, fill=YEL, stroke=BLACK, alpha=vis(t, t_n, en("river") - .2, .4, .2))
         q = pj(cam, 29.135, 41.228)
         if q: ytag(img, q[0] - 150 * SS, q[1] + 90 * SS, "BOĞAZ ÇIKIŞI", a_n, 36, bg=WHITE)
 
@@ -348,8 +348,8 @@ def size_scene(img, t):
     if a <= 0: return
     img.alpha_composite(Image.new("RGBA", (W, H), (6, 10, 24, int(205 * a))))
     v = 22000 * smooth((t - st("size")) / 1.4)
-    stamp_text(img, trnum(v), (W / 2, 820 * SS), FA, 210, fill=YEL, stroke=BLACK, alpha=a)
-    stamp_text(img, "m³ / saniye", (W / 2, 1000 * SS), FA, 70, fill=WHITE, stroke=BLACK, alpha=a)
+    stamp_text(img, trnum(v), (W / 2, 820 * SS), FA, 210, fill=YEL, stroke=BLACK, alpha=a * clamp01((t - st("size") + .05) / .25))
+    stamp_text(img, "m³ / saniye", (W / 2, 1000 * SS), FA, 70, fill=WHITE, stroke=BLACK, alpha=a * clamp01((t - st("size") + .05) / .25))
     t_r = cue("size", "ren")
     a_b = a * vis(t, t_r - .1, en("size") + .3, .3, .4)
     if a_b > 0:
