@@ -1,4 +1,4 @@
-# Video 13: Nemrut – üretimde (26.11.2026)
+# Video 13: Nemrut – TAMAMLANDI (26.11.2026)
 
 Van Gölü videosunun (en çok tutan) devamı: gölün sodalı/çıkışsız olmasının sebebi Nemrut'un lav seti.
 
@@ -13,3 +13,9 @@ intro, lava, soda, question, caldera, cold, hot, yinyang, active, cta
 
 ## Çalışma klasörü ek dosyaları
 nem_tex.py, nem_goller.json, (+ ../geo/dem önbelleği; yoksa ilk açılışta indirilir), scikit-image.
+
+## Tamamlandı (26.11.2026)
+- `nemrut-shorts.mp4` (51,9 sn), −14,5 LUFS, TP −1,9 dBTP (ln2.py −2,2).
+- Senkron (bitmiş videonun sesi Whisper ile): ortalama −3 ms, 150 ms üstü sapma yok.
+- Düzeltme: soru sahnesinde (19–21 sn) görüş alanı detay dokusunun dışına taşıp bulanık geniş dokuya düşüyordu → kamera D 40→30, eğim 18→8; yalnızca 390–780. kareler yeniden render edildi.
+- Kapaklar: kapak-dikey.jpg (kaldera + yin-yang), kapak-yatay.jpg (lav seti) – kapak13.py.
