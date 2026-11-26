@@ -12,6 +12,19 @@ from render3 import A, L, RED, WHITE, YEL, BLACK, VIG, clamp01
 from render4 import globe, sample, EARTH, fractal, Cam, persp_coeffs
 import brand
 
+# Koruma: yeni Pillow ters koordinatlı dikdörtgende hata veriyor → koordinatları sırala
+from PIL import ImageDraw as _ID
+if not getattr(_ID.ImageDraw, "_safe_rect", False):
+    _orig_rect = _ID.ImageDraw.rectangle
+    def _rect(self, xy, *a, **k):
+        try:
+            (x0, y0), (x1, y1) = (xy[0], xy[1]) if len(xy) == 2 else ((xy[0], xy[1]), (xy[2], xy[3]))
+            xy = (min(x0, x1), min(y0, y1), max(x0, x1), max(y0, y1))
+        except Exception: pass
+        return _orig_rect(self, xy, *a, **k)
+    _ID.ImageDraw.rectangle = _rect; _ID.ImageDraw._safe_rect = True
+
+
 LEAD = 0.05
 FC, FP = "caveat.ttf", "playfair.ttf"
 BLUE = (37, 99, 235); TURQ = (40, 205, 215); RIVER = (80, 170, 255); PINK = (240, 110, 190)
@@ -213,6 +226,7 @@ def t_pillar(d, x, ground, hm, a, grow=1.0, scale=1.0):
     pxm = PXM * scale; h = hm * pxm * grow
     sw, tw, th = SHAFT_W * scale, TOP_W * scale, TOP_H * scale
     top = ground - h
+    if top + th >= ground: return   # taş henüz yerden çıkmadı (yükselme animasyonunun ilk anı)
     d.rectangle((x - sw / 2, top + th * .9, x + sw / 2, ground), fill=A(STONE, a), outline=A(STONE_D, a), width=max(2, int(4 * SS * scale)))
     d.rectangle((x - tw / 2, top, x + tw / 2, top + th), fill=A(STONE, a), outline=A(STONE_D, a), width=max(2, int(4 * SS * scale)))
     d.rectangle((x + sw / 2 - 6, top + th, x + sw / 2, ground), fill=A(STONE_D, a * .6))
