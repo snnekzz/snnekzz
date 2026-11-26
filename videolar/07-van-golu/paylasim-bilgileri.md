@@ -1,5 +1,7 @@
 # Video 7: Van Gölü – Dev Göl, Tek Balık
 
+> ⚠️ DÜZELTME (26.11.2026): 2020–2021'de gölde ikinci balık türü tescillendi: **Van Gölü küçük mercan balığı** (5–6 cm, mikrobiyalitlerin üzerinde yaşar, tüm yaşam döngüsü gölde). Videodaki "tek tür" ifadesi eksik. Yapılanlar: sabitlenmiş düzeltme yorumu, açıklamanın başına not, yeni başlık: "Türkiye'nin En Büyük Gölünde Neden Bu Kadar Az Balık Var? 🐟 #shorts".
+
 ## YouTube Shorts
 **Başlık:**
 Türkiye'nin En Büyük Gölünde Neden Sadece TEK Balık Yaşıyor? 🐟 #shorts

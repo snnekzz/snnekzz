@@ -26,6 +26,7 @@ Her yeni videoda bu listeyi uygula. Kaynak: kendi deneyimlerimiz + Haritalogy ka
 - Ses seviyesi: -14 LUFS (YouTube standardı).
 
 ## ❌ Yapılan hatalar (tekrarlama)
+- **Eskimiş bilgi (Van Gölü):** "tek balık türü" dedik; 2020–2021'de ikinci tür (Van Gölü küçük mercan balığı) tescillenmişti. **Her konuda doğrulamaya ek olarak "<konu> yeni keşif / yeni tür / son yıllar" araması yap.** "Sadece / tek / hiç" gibi mutlak ifadeleri ayrıca kontrol et.
 - **Tahmini hizalama (DTW + karakter oranı):** hızlandırılmış seste altyazı ve sahneler sesle kaydı. Çözüm: Whisper ile ölçülmüş kelime zamanları.
 - **Efektleri konuşma altında fazla kısmak (%65):** efektler ve geçiş sesi duyulmaz oldu. Doğru ayar: konuşma sırasında efektler ×0.8; yumuşak geçiş sesi konuşmanın ~6 dB altında, 140–1100 Hz bant.
 - **Sesi kelime içinden kesmek** (Süleyman Şah, hızlandırılmış ses): sessizlik eklerken duraklama bulunamayınca ses kesildi → kesik kesik ses. Çözüm: `build_timing_safe.py` + efektleri konuşma altında otomatik kısma (`sfx_duck`).
