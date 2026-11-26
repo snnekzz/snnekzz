@@ -22,6 +22,7 @@ CH = [  # (klasör, dosya, kesim sn, başlık)
     ("03-kuzey-sentinel", "kuzey-sentinel-shorts.mp4", 57.8, "Kimsenin giremediği ada: Kuzey Sentinel"),
 ]
 
+def tr_up(s): return s.replace("i", "İ").replace("ı", "I").upper()
 def wrap(text, font, maxw):
     words, lines, cur = text.split(), [], ""
     for w in words:
@@ -48,7 +49,7 @@ def panel(i):
     d.text((x0, 120), "HARİTALARIN BİLİNMEYEN 8 SIRRI", font=F7(26), fill=GOLD)
     d.text((x0, 170), f"{i + 1:02d}", font=F9(150), fill=RED)
     y = 360
-    for ln in wrap(CH[i][3].upper(), F9(54), W - 60 - 40 - x0):
+    for ln in wrap(tr_up(CH[i][3]), F9(54), W - 60 - 40 - x0):
         d.text((x0, y), ln, font=F9(54), fill=WHITE); y += 66
     y = max(y + 40, 560)
     for k, c in enumerate(CH):
@@ -63,7 +64,7 @@ def card(i):
     im = bg_grad(); d = ImageDraw.Draw(im)
     d.text((W / 2, 330), f"{i + 1:02d}", font=F9(220), fill=RED, anchor="mm")
     y = 520
-    for ln in wrap(CH[i][3].upper(), F9(72), 1500):
+    for ln in wrap(tr_up(CH[i][3]), F9(72), 1500):
         d.text((W / 2, y), ln, font=F9(72), fill=WHITE, anchor="mm"); y += 88
     d.text((W / 2, 860), "HARİTALARIN BİLİNMEYEN 8 SIRRI", font=F7(30), fill=GOLD, anchor="mm")
     return im.convert("RGB")
@@ -130,7 +131,7 @@ for i, (fold, fn, cut, title) in enumerate(CH):
 still_seg(outro(), 20.0, pad(20.0, 48), "seg/99_outro.mp4"); segs.append(("outro", "seg/99_outro.mp4"))
 
 open("seg/list.txt", "w").write("".join(f"file '{os.path.abspath(p)}'\n" for _, p in segs))
-subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", "seg/list.txt", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
+subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", "seg/list.txt", "-c:v", "libx264", "-preset", "medium", "-crf", "22",
                 "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "192k", "-ar", str(SR), "seg/tmp.mp4"], check=True)
 # bölüm zaman damgaları (açıklama için)
 t, stamps = 0.0, []
