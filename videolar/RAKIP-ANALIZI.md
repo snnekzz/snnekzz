@@ -33,3 +33,17 @@ Ek kanıt: Harita Hikâyeleri'nin "Van Gölü neden denize akmıyor?" uzun video
 4. **Abone dönüşümü:** son karede kısa "Abone ol – her hafta yeni bir sır" + sabitlenmiş yorumda soru. Kanal kimliği (logo, banner, filigran) tutarlı – tamamlandı.
 5. **Ara sıra popüler kültür köprüsü:** dizi/oyun/film mekânlarının gerçek haritası (ör. "Kuruluş Osman'daki Söğüt gerçekte nerede?").
 6. **Başlık şablonu:** "[Şaşırtıcı gerçek + sayı]? 🗺️ #shorts" – sansasyon dozunda, yanıltmadan.
+
+## Ek: Meridyen Tarih (26.11.2026)
+Instagram: @meridyentarih (sayfa giriş istediği için okunamadı). YouTube: "Meridyen Tarih" – 1.330 abone, 86 Shorts, toplam ~1,2 M izlenme, **medyan 2,6 bin**, 2 uzun video (en iyisi 1,6 bin).
+Tanıtım: "Tarihin 'hadi ya' dedirten yerleri, haritada ⏱ 60 saniyede bir sefer, bir sınır, bir sürpriz".
+
+**Hitleri:** Kars'taki taş binaları Ruslar yaptı (182 bin) · Adana 1943: Churchill ve İnönü trende (173 bin) · Büyük Selçuklu (114 bin) · "Amerika 34 bin askerle bir adaya çıktı. Adada tek düşman yoktu. Yine de 92 asker öldü." (107 bin) · **Yenikapı 37 batık gemi (95 bin)** · Kadıköy "körler" (59 bin).
+**Son videoları düşük:** Kapadokya 466, Karadeniz eskiden göldü 1,1 bin, Konya Ovası göldü 1,1 bin, Sarıkamış 1 bin, Hannibal 1,3 bin.
+
+**Dersler:**
+1. **Başlık = kanca cümlesi, 3 vuruşlu çelişki:** "34 bin asker → tek düşman yok → yine de 92 ölü". Bizim kanca formülünün başlıktaki hâli; başlıklarda kullan.
+2. **Yerel şehir + ünlü isim** tutuyor (Kars + Ruslar, Adana + Churchill/İnönü). Türkiye'nin şehirlerinden yerel gizemler bul.
+3. **Çok video ≠ büyüme:** 86 Shorts, medyan 2,6 bin; son videolar 1 bin civarında. Genel bilgi tonundaki konular (Karadeniz göldü, Kapadokya volkanik) tutmamış → konu tek başına yetmiyor, **insan/olay/sayı** gerekli.
+4. Aynı konular dönüyor (Yenikapı, Hatay, Kadıköy körler – Haritanın Ardı'dan da). Yenikapı konusu iki kanalda kanıtlanmış (95 bin / 609 ilk 3 saat).
+5. **Plan düzeltmesi:** "İstanbul Boğazı nasıl oluştu?" genel bilgi tonunda kalırsa zayıf (Meridyen'in Karadeniz videosu 1,1 bin). İnsan/olay çerçevesi gerekli: ör. "7.500 yıl önce Karadeniz kıyısındaki köyler bir anda sular altında kaldı mı?" (bilimsel tartışma olduğu açıkça söylenerek).
