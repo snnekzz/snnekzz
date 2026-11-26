@@ -1,0 +1,20 @@
+# Video 9: Göbeklitepe – piramitlerden 7.000 yıl önce dikilen dev taşlar. (seslendirme, altyazı, sahne, boşluk)
+SEGMENTS = [
+    ("Piramitlerden yedi bin yıl önce, Şanlıurfa'da birileri dev taşlar dikti.",
+     "Piramitlerden 7.000 yıl önce, Şanlıurfa'da birileri dev taşlar dikti.", "intro", 0),
+    ("Ama o insanların ne yazısı vardı, ne tekerleği, ne de tarlası.",
+     "Ama o insanların ne yazısı vardı, ne tekerleği, ne de tarlası.", "twist", 0),
+    ("Peki bu taşları kim, nasıl dikti?", "Peki bu taşları kim, nasıl dikti?", "question", 0),
+    ("Burası Göbeklitepe. Yaklaşık on bir bin beş yüz yıllık.", "Burası Göbeklitepe. Yaklaşık 11.500 yıllık.", "site", 0),
+    ("Ortadaki dikilitaşlar beş buçuk metreye varıyor ve tonlarca ağırlıkta.",
+     "Ortadaki dikilitaşlar 5,5 metreye varıyor ve tonlarca ağırlıkta.", "pillars", 0),
+    ("Üzerlerinde tilki, yaban domuzu, akrep ve akbaba kabartmaları var.",
+     "Üzerlerinde tilki, yaban domuzu, akrep ve akbaba kabartmaları var.", "animals", 0),
+    ("Bazı taşlarda kollar ve eller oyulmuş. Yani bu taşlar aslında dev insan figürleri olabilir.",
+     "Bazı taşlarda kollar ve eller oyulmuş. Yani bu taşlar aslında dev insan figürleri olabilir.", "human", 0),
+    ("Önce tarım, sonra tapınak geldi sanılıyordu. Göbeklitepe bu sırayı tersine çevirmiş olabilir.",
+     "Önce tarım, sonra tapınak geldi sanılıyordu. Göbeklitepe bu sırayı tersine çevirmiş olabilir.", "order", 0),
+    ("Üstelik kazılan kısım çok küçük. Toprağın altında en az iki yüz dikilitaş daha bekliyor.",
+     "Üstelik kazılan kısım çok küçük. Toprağın altında en az 200 dikilitaş daha bekliyor.", "more", 0),
+    ("Sence bu taşları dikenler kimdi? Yorumlara yaz!", "Sence bu taşları dikenler kimdi? Yorumlara yaz!", "cta", 0),
+]
