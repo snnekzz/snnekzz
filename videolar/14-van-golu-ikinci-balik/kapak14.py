@@ -3,8 +3,10 @@ import sys; sys.path.insert(0, "../kapak")
 import render16 as M
 from kapak_ortak import *
 mute(M); OUT = "/home/user/snnekzz/videolar/14-van-golu-ikinci-balik/"
-bg = M.frame(M.cue("towers", "mikrobiyalitler", "bilinen") + .2).convert("RGBA")
-v = bg.copy(); top_shade(v, 760, 210)
+bg = M.frame(M.st("towers") + 1.9).convert("RGBA")
+v = bg.copy(); off = 140   # sahne aşağı kaydırılır: kule tepeleri başlığın altında kalsın
+v.paste(bg.crop((0, 0, 1080, 1920 - off)), (0, off)); v.paste(bg.crop((0, 0, 1080, off)), (0, 0))
+top_shade(v, 760, 210)
 pillx(v, "VAN GÖLÜ", 540, 120, 34, RED, WHITE)
 text(v, "TEK BALIK DEMİŞTİK…", 540, 250, 66, WHITE, 5)
 text(v, "YANILMIŞIZ!", 540, 420, 150, YEL, 11, rot=-3)
