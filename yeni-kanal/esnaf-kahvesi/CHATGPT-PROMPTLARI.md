@@ -44,19 +44,19 @@ Vertical 9:16, use the uploaded characters and coffeehouse exactly. Wide shot at
 ```
 **Sahne 2 – Hayri yanlış duyuyor**
 ```
-Vertical 9:16, use the uploaded characters exactly. Close-up of HAYRİ at the table, cupping his hand to his ear, confused face, his thick glasses sliding down his nose, tea glass in front of him, coffeehouse blurred behind.
+Vertical 9:16, use the uploaded characters exactly. Close-up of HAYRİ at the table, cupping his hand to his ear, confused face, his thick glasses sliding down his nose, tea glass in front of him, coffeehouse blurred behind. Character in the lower two thirds, empty space at the top. Mouth closed, neutral lips.
 ```
 **Sahne 3 – Bayram bağırıyor**
 ```
-Vertical 9:16, use the uploaded characters exactly. Medium shot: BAYRAM leans over the table shouting, his tiny head bright red, veins on his forehead; HAYRİ sits next to him completely unbothered, sipping tea.
+Vertical 9:16, use the uploaded characters exactly. Medium shot: BAYRAM leans over the table shouting, his tiny head bright red, veins on his forehead; HAYRİ sits next to him completely unbothered, sipping tea. Characters in the lower two thirds, empty space at the top. BAYRAM's mouth only slightly open.
 ```
 **Sahne 4 – Fısıltı**
 ```
-Vertical 9:16, use the uploaded characters exactly. SELİM, NAİL, BAYRAM and HAYRİ all lean in close over the table, whispering secretly; NAİL in the middle with a sly smile, holding his calculator. Dramatic warm light from above.
+Vertical 9:16, use the uploaded characters exactly. SELİM, NAİL, BAYRAM and HAYRİ all lean in close over the table, whispering secretly; NAİL in the middle with a sly smile, holding his calculator. Dramatic warm light from above. Characters in the lower two thirds, empty space at the top. Mouths closed, neutral lips.
 ```
 **Sahne 5 – Final: Rıza**
 ```
-Vertical 9:16, use the uploaded characters exactly. RIZA arrives with his silver tea tray and a deadpan face; everyone at the table freezes in shock, NAİL drops his calculator, HAYRİ pushes his tea glass away. Comedic frozen moment.
+Vertical 9:16, use the uploaded characters exactly. RIZA arrives with his silver tea tray and a deadpan face; everyone at the table freezes in shock, NAİL drops his calculator, HAYRİ pushes his tea glass away. Comedic frozen moment. Characters in the lower two thirds, empty space at the top. RIZA's mouth closed, neutral lips.
 ```
 
 ## 4) Kapak (dikey 9:16, yazısız; yazıyı sonra ekleriz)
