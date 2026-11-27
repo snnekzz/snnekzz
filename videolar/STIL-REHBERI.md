@@ -2,6 +2,8 @@
 
 Her yeni videoda bu listeyi uygula. Kaynak: kendi deneyimlerimiz + Haritalogy kanalının incelenmesi.
 
+**Önce `PROFESYONEL-KONTROL-LISTESI.md`:** kanca, elde tutma, döngü sonu, kapak/başlık, yayın ve ölçüm maddeleri her videoda zorunlu.
+
 ## ✅ Görsel stil
 - **Canlı uydu haritası:** parlak, doygun renkler (mavi okyanus, yeşil-kahverengi kara). Koyu/sisli harita kullanma.
 - **Yükseltilmiş ülkeler:** vurgulanan ülke = canlı tek renk + **kalın beyaz kenar** + **altında gölge** (haritadan kalkmış gibi).
