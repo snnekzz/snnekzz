@@ -35,6 +35,7 @@ Dayanak: kendi Analytics verimiz (Mısır elde tutma grafiği: kayıp ilk 30 sn'
 - [ ] **Kelime kelime altyazı + renk = anlam** (anahtar kelime haritadaki rengiyle) ✔
 - [ ] **Somut karşılaştırma:** soyut sayıyı tanıdık şeye bağla ("28 katlı bina", "bahçe hortumu", "Ren'in 10 katı").
 - [ ] **Süre 40–50 sn**, seslendirme ~700–800 karakter. 60 sn'yi geçme.
+- [ ] Animasyon tetikleri: cue() kelime içinde arar → 2 harfli iğne ("en", "on") kullanma; tetik kelimesinin sahnede tek geçtiğini kontrol et.
 - [ ] Gereksiz cümle avı: her cümle ya bilgi ya merak eklemeli; ikisini de eklemeyen cümle silinir.
 
 ## 4. Kapanış ve döngü
