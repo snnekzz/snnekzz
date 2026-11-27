@@ -50,3 +50,8 @@ Hedef: izlemeyi seçenler %70+, ortalama %80+ → videolar 40–45 sn, ses 0,0 s
 - İzlenme: Mısır 2,9 B, Van Gölü 2,2 B (25 Kas'ta sıçrama), Kuzey Sentinel 1,3 B, 1977 Sinyali 1,2 B, Mary Celeste 1,2 B, Yenikapı 810, İstiklal Yolu 374, Cooper 280.
 - Yayınlanmayan hazır videolar: Nemrut, İstanbul Boğazı, Göbeklitepe, Derinkuyu, Ağrı Dağı, Deniz altı kabloları, Kaliningrad, Süleyman Şah (son ikisi eski format: 0,4–0,5 sn sessiz giriş, 57–65 sn).
 - Önerilen sıra: Nemrut → Boğaz → Göbeklitepe → Derinkuyu → Ağrı → Kablolar → (girişleri kısaltılmış) Kaliningrad, Süleyman Şah.
+
+## Yayın kaydı
+| Tarih | Video | YouTube | TikTok |
+|---|---|---|---|
+| 27.11.2026 | Nemrut | ✔ (akşam) | ✔ |
