@@ -12,6 +12,19 @@ from render3 import A, L, RED, WHITE, YEL, BLACK, VIG, clamp01
 from render4 import globe, sample, EARTH, fractal, Cam, persp_coeffs
 import brand
 
+# Koruma: yeni Pillow ters koordinatlı dikdörtgende hata veriyor → koordinatları sırala
+from PIL import ImageDraw as _ID
+if not getattr(_ID.ImageDraw, "_safe_rect", False):
+    _orig_rect = _ID.ImageDraw.rectangle
+    def _rect(self, xy, *a, **k):
+        try:
+            (x0, y0), (x1, y1) = (xy[0], xy[1]) if len(xy) == 2 else ((xy[0], xy[1]), (xy[2], xy[3]))
+            xy = (min(x0, x1), min(y0, y1), max(x0, x1), max(y0, y1))
+        except Exception: pass
+        return _orig_rect(self, xy, *a, **k)
+    _ID.ImageDraw.rectangle = _rect; _ID.ImageDraw._safe_rect = True
+
+
 LEAD = 0.05
 FC, FP = "caveat.ttf", "playfair.ttf"
 BLUE = (37, 99, 235); TURQ = (40, 205, 215); RIVER = (80, 170, 255); PINK = (240, 110, 190)
@@ -278,9 +291,12 @@ def flat_overlays(img, cam, fp, t):
     if a_s > 0:
         q = pj(cam, 28.97, 41.01)
         if q: ytag(img, q[0], q[1] + 90 * SS, "İSTANBUL", a_s, 52, bg=KRED, fg=WHITE)
-        for lab, lo, la in (("BULGARİSTAN", 27.0, 43.0), ("ROMANYA", 28.0, 44.5), ("YUNANİSTAN", 22.5, 38.8), ("KIBRIS · İSRAİL", 34.0, 33.6)):
+        for lab, lo, la in (("BULGARİSTAN", 27.0, 43.0), ("ROMANYA", 30.2, 44.0), ("YUNANİSTAN", 22.5, 38.8), ("KIBRIS · İSRAİL", 34.0, 33.6)):
             qq = pj(cam, lo, la)
-            if qq: ytag(img, qq[0], qq[1], lab, a_s * sine_out((t - t_i - .8) / .4), 34, bg=WHITE)
+            if qq:   # etiket ekran içinde ve üst altyazı bandının altında kalsın
+                hw = (font(FA, 34 * SS).getbbox(lab)[2] + 30 * SS) / 2 + 30 * SS
+                x = min(max(qq[0], hw), W - hw); y = max(qq[1], 430 * SS)
+                ytag(img, x, y, lab, a_s * sine_out((t - t_i - .8) / .4), 34, bg=WHITE)
     if a_r > 0 and t > t_r:
         ytag(img, W / 2, 620 * SS, "KOPMA = YAVAŞLAMA", a_r * sine_out((t - t_r - .2) / .3), 58, bg=KRED, fg=WHITE)
     qa = vis(t, cue("question", "nereden", "peki"), en("question") + .1, .3, .3)

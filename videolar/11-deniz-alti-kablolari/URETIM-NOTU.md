@@ -1,5 +1,4 @@
-# Video 11: Deniz altı internet kabloları – TASLAK (seslendirme bekliyor – ElevenLabs kredisi yok, 26.11.2026)
-Durum: senaryo + animasyon hazır, geçici sesle zamanlama test edildi. Yayın sesi: Emrullah, eleven_v4, `elevenlabs_metin.txt` (~774 kredi).
+# Video 11: Deniz altı internet kabloları – TAMAMLANDI (26.11.2026)
 Kaynak fikir: Sinan Dündoğan'ın "okyanus tabanına internet kabloları" videosu (396 bin) → harita + Türkiye köprüsü.
 
 ## Doğrulanan bilgiler
@@ -12,3 +11,11 @@ Kaynak fikir: Sinan Dündoğan'ın "okyanus tabanına internet kabloları" video
 
 ## Bitirme
 EQ → words.py → build_timing_words.py → make_audio (sahneler: twist, question, istanbul, marmaris, hose, world, risk, cta) → render13.py → kapak + paylaşım.
+
+## Tamamlandı (26.11.2026)
+- Ses: Emrullah, eleven_v4, tek versiyon (kullanıcının ikinci ElevenLabs hesabında web arayüzünden üretildi, mp3 olarak yüklendi) → EQ (voice_eq.txt) → `deniz-alti-kablolari-shorts.mp4`.
+- Ses seviyesi: iki geçişli loudnorm → ~−14 LUFS, TP ≤ −1,1 dBTP (make_audio artık iki geçişli).
+- Altyazı-ses senkronu (bitmiş videonun sesi Whisper ile yeniden ölçüldü): ortalama sapma −1 ms, 150 ms üstü sapma yok.
+- Kapaklar: `kapak-dikey.jpg` (1080x1920), `kapak-yatay.jpg` (1280x720) – betik `kapak11.py` (+ harita-motoru/kapak_ortak.py).
+- Paylaşım metinleri: `paylasim-bilgileri.md`.
+- Düzeltme: Romanya/Bulgaristan etiketleri üst altyazıyla çakışıyor ve kenarda kesiliyordu → ekran içine ve altyazı bandının altına sınırlandı.

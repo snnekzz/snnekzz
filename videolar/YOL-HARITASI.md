@@ -7,7 +7,7 @@ Dayanak: RAKIP-ANALIZI.md, HARITANIN-ARDI-TEKNIKLERI.md, HARITALOGY-TEKNIKLERI.m
   Shorts'lardan "İlgili video" bağlantısıyla uzun videoya yönlendir.
 
 ## Konu seçme kuralları (her video bu 4 testten geçmeli)
-1. **Türkiye köprüsü** var mı? (Yabancı konular rakiplerde de düşük.)
+1. **Çözülmemiş gizem + tek net soru** var mı? Türkiye köprüsü artı puan, zorunlu değil (27.11.2026: 1977 Sinyali ve Mary Celeste Türkiye'siz 1,2 B aldı).
 2. Başlıkta **somut şaşırtıcı sayı** var mı?
 3. Kanca formülüne oturuyor mu: gerçek+sayı → "Ama…" → "Peki neden?" → "Cevap…"
 4. Sonunda bir **"yok artık" anı** var mı?
@@ -41,5 +41,17 @@ Haftada 2 Shorts + ayda 1 uzun video için **Starter planı (~5 $/ay, 30.000 kre
 ## Ölçüm kayıtları
 | Video | Süre | İzlemeyi seçenler | Ort. izleme | Ort. % | Abone | Not |
 |---|---|---|---|---|---|---|
-| Mısır sınırları | 1:10 | %61,9 | 0:44 | ~%63 | +2 (2,8 bin izl.) | Eski format: 0,4 sn sessiz giriş, yavaş ses. Referans çizgi. |
+| Mısır sınırları | 1:10 | %61,9 | 0:44 | %63,4 | +2 (2,9 bin izl.) | Eski format. Elde tutma: ilk 30 sn'de %100→%61 düşüş, 30–65 sn düz plato → sorun girişte, içerik iyi. |
 Hedef: izlemeyi seçenler %70+, ortalama %80+ → videolar 40–45 sn, ses 0,0 sn'de başlar (Van ve Ağrı bu kurala uygun).
+
+## Kanal durumu – 27.11.2026 (son 28 gün, YouTube Studio)
+- 4,2 B tekil izleyici, +11 abone, 54,8 saat izlenme; toplam 16 abone.
+- Keşif: %95,1 Shorts akışı, %2,1 arama, %1,9 kanal sayfası. İzleyicilerin %99,9'u yeni (sadık kitle yok → seri + düzenli yayın).
+- İzlenme: Mısır 2,9 B, Van Gölü 2,2 B (25 Kas'ta sıçrama), Kuzey Sentinel 1,3 B, 1977 Sinyali 1,2 B, Mary Celeste 1,2 B, Yenikapı 810, İstiklal Yolu 374, Cooper 280.
+- Yayınlanmayan hazır videolar: Nemrut, İstanbul Boğazı, Göbeklitepe, Derinkuyu, Ağrı Dağı, Deniz altı kabloları, Kaliningrad, Süleyman Şah (son ikisi eski format: 0,4–0,5 sn sessiz giriş, 57–65 sn).
+- Önerilen sıra: Nemrut → Boğaz → Göbeklitepe → Derinkuyu → Ağrı → Kablolar → (girişleri kısaltılmış) Kaliningrad, Süleyman Şah.
+
+## Yayın kaydı
+| Tarih | Video | YouTube | TikTok |
+|---|---|---|---|
+| 27.11.2026 | Nemrut | ✔ (akşam) | ✔ |
