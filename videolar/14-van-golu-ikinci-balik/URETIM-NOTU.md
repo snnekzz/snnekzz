@@ -1,4 +1,4 @@
-# Video 14: Van Gölü'ndeki ikinci balık – üretimde (27.11.2026)
+# Video 14: Van Gölü'ndeki ikinci balık – TAMAMLANDI (27.11.2026)
 
 İlk video: PROFESYONEL-KONTROL-LISTESI.md'nin tamamı uygulandı.
 - Kanca: itiraf ("…söylemiştik. Yanılmışız.") + ekranda eski "TEK BALIK!" kartının çizilmesi.
@@ -9,3 +9,9 @@
 
 Sahneler: intro, divers, question, fresh, towers, spring, isolate, danger, cta.
 Çalışma klasörü: render16.py + nem_tex.py + nem_goller.json (+ vanr_tex.png önbelleği).
+
+## Tamamlandı
+- `van-golu-ikinci-balik-shorts.mp4` (50,7 sn), −14,6 LUFS, TP −1,9 dBTP; senkron ortalama 0 ms, 150 ms üstü sapma yok.
+- Düzeltmeler: su altı panelinde ışık huzmeleri haritayı delip gösteriyordu → ayrı katman; kule boyu/cetvel altyazı bandından uzaklaştırıldı; "BİLİNEN EN BÜYÜK MİKROBİYALİTLER" etiketi "en" tetiği yüzünden ~5 sn erken çıkıyordu → tetik "bilinen" (381–1143. kareler yeniden render).
+- Kapaklar: kapak-dikey.jpg (kuleler + balıklar, "YANILMIŞIZ!"), kapak-yatay.jpg (çizilen "TEK BALIK!" kartı) – kapak14.py.
+- Not: cue() iğneleri kelime İÇİNDE arar; 2 harfli iğne (ör. "en", "on") kullanma.
