@@ -392,7 +392,7 @@ def underwater(img, t):
             for yy in (y0, y1): d2.line([(x - 24 * SS, yy), (x + 24 * SS, yy)], fill=A(YEL, a2), width=int(8 * SS))
             stamp_text(img, f"{int(round(40 * g))} m", (x + 10 * SS, y1 - 70 * SS), FA, 100, fill=YEL, stroke=BLACK, alpha=a2)
             hand(img, "≈ 13 katlı bina", W * .30, 640 * SS, 80, a2 * vis(t, t_t + .5, en("towers") + .1, .3, .3), WHITE, -5)
-        t_m = cue("towers", "mikrobiyalitler", "bilinen", "en")
+        t_m = cue("towers", "bilinen", "mikrobiyalitler")
         if t > t_m: ytag(img, W / 2, 1500 * SS, "BİLİNEN EN BÜYÜK MİKROBİYALİTLER", a2 * vis(t, t_m, en("towers") + .1, .3, .3), 46, bg=TOWER)
         a_s = a2 * vis(t, st("spring") - .1, en("spring") + .1, .3, .3)
         if a_s > 0:
