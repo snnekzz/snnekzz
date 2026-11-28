@@ -70,12 +70,12 @@ scene.add(sun, sun.target);
 scene.fog = new THREE.FogExp2(0xffffff, 0.0016);
 
 export const TOD = {
-  sunset: { zen: 0x2f4e86, hor: 0xffa66b, gnd: 0x3b3a40, sunC: 0xffb070, dir: V(-0.85, 0.16, -0.5), sunI: 3.2, sunL: 0xffb27a, hemiS: 0x8aa0d0, hemiG: 0x5a4a3a, hemiI: 0.55, fog: 0xd9a487, fogD: 0.0019, exp: 1.0, stars: 0, size: 0.016,
-            water: 0x1c4d63, grade: { sat: 1.12, con: 1.08, lift: [0.02, 0.0, 0.03], gain: [1.04, 0.98, 0.94] } },
-  night:  { zen: 0x050b1d, hor: 0x1d3360, gnd: 0x080a10, sunC: 0xc8d6ff, dir: V(0.45, 0.55, -0.7), sunI: 1.0, sunL: 0x9fb6ff, hemiS: 0x4a6aaa, hemiG: 0x1a1d26, hemiI: 0.45, fog: 0x18284a, fogD: 0.0022, exp: 1.25, stars: 1, size: 0.02,
-            water: 0x0a2236, grade: { sat: 0.95, con: 1.1, lift: [0.0, 0.015, 0.05], gain: [1.0, 1.0, 1.06] } },
-  dawn:   { zen: 0x3d6cb3, hor: 0xffc48f, gnd: 0x3a3a3e, sunC: 0xffcf96, dir: V(0.9, 0.2, 0.35), sunI: 3.0, sunL: 0xffd2a0, hemiS: 0xb7c7e6, hemiG: 0x5d5446, hemiI: 0.65, fog: 0xf0c3a0, fogD: 0.0017, exp: 1.0, stars: 0, size: 0.014,
-            water: 0x235a70, grade: { sat: 1.1, con: 1.05, lift: [0.01, 0.01, 0.03], gain: [1.03, 1.0, 0.96] } },
+  sunset: { zen: 0x4a78b8, hor: 0xf0cfaa, gnd: 0x3b3a40, sunC: 0xffd6a8, dir: V(-0.8, 0.34, -0.5), sunI: 3.0, sunL: 0xffe2bc, hemiS: 0xbcd0ea, hemiG: 0x5e5544, hemiI: 0.8, fog: 0xdcd0bd, fogD: 0.0013, exp: 1.0, stars: 0, size: 0.012,
+            water: 0x24566a, grade: { sat: 0.98, con: 1.04, lift: [0.005, 0.005, 0.01], gain: [1.02, 1.0, 0.97] } },
+  night:  { zen: 0x13254a, hor: 0x5c719c, gnd: 0x101420, sunC: 0xc4d4ff, dir: V(0.45, 0.55, -0.7), sunI: 1.7, sunL: 0xb2c6ff, hemiS: 0x8098d0, hemiG: 0x2c3242, hemiI: 1.05, fog: 0x3c4c72, fogD: 0.0017, exp: 1.5, stars: 0.7, size: 0.018,
+            water: 0x14304a, grade: { sat: 0.95, con: 1.04, lift: [0.0, 0.01, 0.03], gain: [1.0, 1.0, 1.03] } },
+  dawn:   { zen: 0x5d8fd0, hor: 0xf5d6b6, gnd: 0x3a3a3e, sunC: 0xffe4c0, dir: V(0.85, 0.3, 0.35), sunI: 3.0, sunL: 0xffe6c8, hemiS: 0xc4d4ec, hemiG: 0x5d5446, hemiI: 0.8, fog: 0xe6d8c8, fogD: 0.0013, exp: 1.0, stars: 0, size: 0.012,
+            water: 0x2a6278, grade: { sat: 0.98, con: 1.04, lift: [0.005, 0.005, 0.01], gain: [1.02, 1.0, 0.98] } },
 };
 export let currentTOD = null;
 const envCache = {};
@@ -108,8 +108,8 @@ export function setTOD(name) {
   const g = grade.uniforms;
   g.saturation.value = p.grade.sat; g.contrast.value = p.grade.con;
   g.lift.value.set(...p.grade.lift); g.gain.value.set(...p.grade.gain);
-  bloom.strength = name === 'night' ? 0.75 : 0.42;
-  bloom.threshold = name === 'night' ? 0.75 : 0.92;
+  bloom.strength = name === 'night' ? 0.5 : 0.3;
+  bloom.threshold = name === 'night' ? 0.85 : 0.95;
   for (const t of torches) t.visible = false;
 }
 export function aimSun(target, span = 120) {
@@ -154,10 +154,13 @@ export function aimSun(target, span = 120) {
     }
     for (let k = 0; k < 3; k++) col.set([c.r, c.g, c.b], (i + k) * 3);
   }
+  for (let i = 0; i < col.length; i++) col[i] = Math.min(1, col[i] * 1.55);
   g.setAttribute('color', new THREE.BufferAttribute(col, 3));
-  g.deleteAttribute('uv');
   g.computeVertexNormals();
-  scene.add(mesh(g, MAT, false, true));
+  const tex = new THREE.TextureLoader().load('./assets/grasslight-big.jpg');
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping; tex.repeat.set(90, 90); tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 8;
+  const tm = new THREE.MeshStandardMaterial({ vertexColors: true, map: tex, roughness: 0.95, envMapIntensity: 0.5 });
+  scene.add(mesh(g, tm, false, true));
 }
 
 // ------------------------------------------------------------- deniz
@@ -175,7 +178,7 @@ export function updateWater(t) { water.material.uniforms.time.value = t * 0.6; }
 
 // ------------------------------------------------------------- bitki örtüsü (instanced)
 // kamera noktalarının çevresi boş bırakılır
-const CLEAR = [[-16, pz(-16) - 13, 12], [1, pz(1) + 14.5, 9], [-58, pz(-58) + 8, 9], [-4, -34, 12], [58, -20, 12], [-75, pz(-75) - 3.4, 8], [-30, pz(-30) + 3, 6]];
+const CLEAR = [[-16, pz(-16) - 13, 12], [1, pz(1) + 14.5, 9], [-58, pz(-58) + 8, 9], [-4, -34, 26], [58, -20, 12], [-75, pz(-75) - 3.4, 8], [-30, pz(-30) + 3, 6]];
 const clear = (x, z) => CLEAR.some(([cx, cz, r]) => (x - cx) ** 2 + (z - cz) ** 2 < r * r);
 {
   const r = rng(41);

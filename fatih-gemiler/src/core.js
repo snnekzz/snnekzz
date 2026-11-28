@@ -22,7 +22,7 @@ export const easeOut = k => 1 - Math.pow(1 - k, 3);
 export const easeIn = k => k * k * k;
 export const V = (x = 0, y = 0, z = 0) => new THREE.Vector3(x, y, z);
 export const lerpV = (a, b, k) => a.clone().lerp(b, k);
-export function rng(seed) { let s = seed >>> 0; return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+export function rng(seed) { let s = (Math.imul(seed | 0, 2654435761) ^ 0x9e3779b9) >>> 0; for (let i = 0; i < 3; i++) s = (s * 1664525 + 1013904223) >>> 0; return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
 function hash(x, y) { const h = Math.sin(x * 127.1 + y * 311.7) * 43758.5453; return h - Math.floor(h); }
 export function noise2(x, y) {
   const xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi;
@@ -78,7 +78,7 @@ renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.0;
-stage.prepend(renderer.domElement);
+(stage || document.body).prepend(renderer.domElement);
 
 export const scene = new THREE.Scene();
 export const camera = new THREE.PerspectiveCamera(42, W / H, 0.3, 6000);
@@ -94,9 +94,9 @@ composer.addPass(bloom);
 composer.addPass(new OutputPass());
 export const grade = new ShaderPass({
   uniforms: {
-    tDiffuse: { value: null }, time: { value: 0 }, vignette: { value: 0.45 }, grain: { value: 0.035 },
+    tDiffuse: { value: null }, time: { value: 0 }, vignette: { value: 0.28 }, grain: { value: 0.014 },
     saturation: { value: 1.08 }, contrast: { value: 1.06 }, lift: { value: new THREE.Vector3(0, 0, 0) },
-    gain: { value: new THREE.Vector3(1, 1, 1) }, ca: { value: 0.006 }, fade: { value: 0 }, flash: { value: 0 },
+    gain: { value: new THREE.Vector3(1, 1, 1) }, ca: { value: 0.0015 }, fade: { value: 0 }, flash: { value: 0 },
   },
   vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }',
   fragmentShader: `

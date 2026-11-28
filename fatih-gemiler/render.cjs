@@ -24,7 +24,7 @@ const server = http.createServer((req, res) => {
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
   page.on('console', m => { if (m.type() === 'error' || m.type() === 'warning') console.log('[page]', m.text()); });
   page.on('pageerror', e => console.log('[pageerror]', e.message));
-  await page.goto(`http://localhost:${port}/index.html?render=1&pr=${PR}`);
+  await page.goto(`http://localhost:${port}/${args.page || 'index.html'}?render=1&pr=${PR}`);
   await page.waitForFunction(() => window.ready === true, null, { timeout: 300000 });
   console.log('timeline', JSON.stringify(await page.evaluate(() => window.TIMELINE)));
   fs.mkdirSync(OUT, { recursive: true });

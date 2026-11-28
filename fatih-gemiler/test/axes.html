@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;background:#000}#stage{position:absolute;width:1080px;height:1920px}canvas{width:1080px!important;height:1920px!important}</style>
+<script type="importmap">{ "imports": { "three": "../node_modules/three/build/three.module.js", "three/addons/": "../node_modules/three/examples/jsm/" } }</script></head>
+<body><div id="stage"></div><script type="module">
+import { THREE, scene, camera, composer } from '../src/core.js';
+scene.background = new THREE.Color(0x9ab8d0);
+scene.add(new THREE.HemisphereLight(0xffffff, 0x556644, 1.4));
+const d = new THREE.DirectionalLight(0xffffff, 2.5); d.position.set(5, 10, 8); scene.add(d);
+const H = await import('../src/humans.js');
+const tests = [[0,-0.5,0.7],[0.5,0,0.7],[-0.5,0,0.7],[0,0,0.6],[0,-0.5,0.7],[0.5,0,0.7],[-0.5,0,0.7],[0,0,0.6],[0.8,0,0.9]];
+const ps = tests.map((_, i) => H.makeHuman({ seed: i * 13 + 1 }));
+window.renderFrame = (t) => {
+  ps.forEach((p, i) => { H.putHuman(p, (i - 4) * 1.4, 0, 0, i >= 4 ? -Math.PI / 2 : 0, () => ({ clip: 'walk', speed: 0, arms: tests[i], fore: [0, 0, 0.35], spine: [0.32,0,0] }), 0.4, 0); });
+  camera.position.set(0, 1.2, 15); camera.fov = 70; camera.updateProjectionMatrix(); camera.lookAt(0, 1, 0);
+  composer.render();
+};
+window.DURATION = 1; window.ready = true;
+</script></body></html>

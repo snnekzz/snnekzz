@@ -103,7 +103,7 @@ export const SHOT_FN = {
     putFatih(fx, fz, -0.35, t, 0);
     let wi = 0;
     for (let i = 0; i < 4; i++) { const p = workers[wi++]; const x = fx - 2.5 - (i % 2) * 1.5, z = fz + (i < 2 ? 2.5 : -2.5); putPerson(p, x, z, -0.35, P.stand(t, i)); }
-    const a = lerp(2.2, 1.75, ease(k)), R = 9.5;
+    const a = lerp(2.6, 2.15, ease(k)), R = 10.5;
     const c = V(fx + Math.cos(a) * R, gy(fx, fz) + 2.4, fz + Math.sin(a) * R);
     cam(c, V(fx, gy(fx, fz) + 1.9, fz), 38, 0.05, t);
     aimSun(V(fx, gy(fx, fz), fz), 25);
@@ -171,8 +171,8 @@ export const SHOT_FN = {
     const sx = lerp(-49.5, -47, k);
     placeOnPath(sx, { sail: 0, oars: 'up', cradle: true, t, lantern: true });
     placeTeam(sx, 0, t, 0, 0);
-    const x = sx + 17.5, z = pz(x) + 2.3;
-    cam(V(x, gy(x, z) + 1.0, z), V(sx + 8, py(sx + 8) + 1.8, pz(sx + 8) - 0.6), 36, 0.14, t);
+    const x = sx + 15, z = pz(x) + 7.5;
+    cam(V(x, gy(x, z) + 3.2, z), V(sx + 9, py(sx + 9) + 1.2, pz(sx + 9)), 38, 0.1, t);
     aimSun(V(sx + 12, 0, 0), 25);
     return [];
   },
@@ -235,12 +235,12 @@ export const SHOT_FN = {
     goldenHornFleet(70); byzBehindChain();
     setLogs(999); setRoute(0); setFires(false, t);
     for (let i = 0; i < 6; i++) {
-      const p = byzSoldiers[i], z = -6 + i * 4.5, b = gy(154, z) + 9.4;
+      const p = byzSoldiers[i], z = -17 + i * 2.6, b = gy(154, z) + 9.4;
       putPerson(p, 153.4, z, Math.PI, i === 0 ? { ...P.point(t, i), look: lerp(0.6, 0, smooth(0.1, 0.5, k)) } : P.stand(t, i), b);
     }
     const e = ease(k);
-    const b0 = gy(154, -6) + 9.4;
-    cam(lerpV(V(157.8, b0 + 2.4, -9.6), V(156.8, b0 + 2.5, -8.8), e), lerpV(V(120, b0 - 6, 6), V(112, 3, 16), e), 38, 0.06, t);
+    const b0 = gy(154, -17) + 9.4;
+    cam(lerpV(V(158.6, b0 + 2.9, -21.5), V(157.8, b0 + 3.0, -20.5), e), lerpV(V(118, b0 - 7, 2), V(110, 3, 12), e), 40, 0.06, t);
     aimSun(V(120, 0, 10), 80);
     return [];
   },

@@ -1,14 +1,15 @@
 // Aktörler: kadırgalar, insanlar (eklemli), öküzler, Fatih ve atı, halatlar, su sıçraması
 import {
-  THREE, mergeGeometries, scene, clamp, lerp, V, rng, MAT, MAT_DS, prep, M, box, cyl, cone, ico, sph, tor, tube, mesh,
+  THREE, mergeGeometries, scene, clamp, lerp, V, rng, MAT, MAT_DS, MAT_SMOOTH, prep, M, box, cyl, cone, ico, sph, tor, tube, mesh,
 } from './core.js';
 import { landHeight, pz, pathPose, yawAt, SHORE_W, SHORE_E, fireTex } from './world.js';
+import { makeHuman, putHuman, hideHumans, POSE as HPOSE } from './humans.js';
 
 // =============================================================== KADIRGA
 export const SHIP_L = 15, SHIP_B = 3.2;
 const PAL = {
-  ott: { hull: 0x6a4126, top: 0x3a2416, band: 0xa3281d, low: 0x40291a, deck: 0xb58a58, sailA: 0xf3ead6, sailB: 0xc7362b, awning: 0xb0241c, trim: 0xd9a63a, flag: 0xc0262d, flag2: 0x1f6b3a },
-  byz: { hull: 0x4b3a2c, top: 0x2c2420, band: 0x3b3f7e, low: 0x2e241c, deck: 0x9c8466, sailA: 0x5b2f6b, sailB: 0x6e3a80, awning: 0x4a2c66, trim: 0xd2a63a, flag: 0xd4a62a, flag2: 0x6a2c86 },
+  ott: { hull: 0x6e5038, top: 0x3e2c1e, band: 0x7a2a20, low: 0x3a2a1e, deck: 0xa88a62, sailA: 0xeee4cf, sailB: 0xdccdaa, awning: 0x8a2a20, trim: 0xc2953a, flag: 0xa3221a, flag2: 0x1f5a34 },
+  byz: { hull: 0x4e3e30, top: 0x2c2420, band: 0x343a5a, low: 0x2e241c, deck: 0x9c8466, sailA: 0xd4c6a6, sailB: 0xbfae8a, awning: 0x4a3a5a, trim: 0xb8953a, flag: 0xb8902a, flag2: 0x5a3a76 },
 };
 const DECK_Y = 1.15;
 function hullGeo(pal) {
@@ -294,27 +295,18 @@ export function pose(p, o = {}) {
   p.head.rotation.y = o.look || 0;
   p.head.rotation.z = o.nod || 0;
 }
-export const P = {
-  pull: (t, k = 0) => ({ phase: t * 3.2 + k, walk: 0.38, lean: 0.48, sh: 1.1, el: 1.2, swing: 0.05, knee: 0.15, nod: 0.25 }),
-  walk: (t, k = 0) => ({ phase: t * 5 + k, walk: 0.45 }),
-  carry: (t, k = 0) => ({ phase: t * 4.4 + k, walk: 0.4, shL: 2.4, shR: 2.4, elL: 1.1, elR: 1.1, swing: 0, lean: 0.08 }),
-  grease: (t, k = 0) => ({ lean: 1.05, knee: 0.5, crouch: 0.15, hip: 0.5, shL: 0.5 + Math.sin(t * 6 + k) * 0.4, shR: 0.9 + Math.sin(t * 6 + k + 1) * 0.3, el: 0.4 }),
-  drum: (t, k = 0) => ({ shL: 0.7, shR: 0.7, elL: 1.5 + Math.max(0, Math.sin(t * 9 + k)) * 0.8, elR: 1.5 + Math.max(0, Math.sin(t * 9 + k + Math.PI)) * 0.8, lean: 0.1 }),
-  cheer: (t, k = 0) => ({ shL: 2.8 + Math.sin(t * 7 + k) * 0.25, shR: 2.6 + Math.sin(t * 7 + k + 1) * 0.25, elL: 0.3, elR: 0.3, out: 0.3, look: Math.sin(k) * 0.3 }),
-  stand: (t, k = 0) => ({ sh: 0.05 + Math.sin(t * 1.3 + k) * 0.03, look: Math.sin(t * 0.7 + k) * 0.25 }),
-  point: (t, k = 0) => ({ shR: 1.55, elR: 0.05, shL: 0.1, look: 0.1 }),
-  ride: () => ({ hip: 1.35, knee: 1.3, spread: 0.35, sh: 0.55, el: 0.9, lean: -0.05 }),
-  place: (t, k = 0) => ({ lean: 0.85, knee: 0.6, crouch: 0.2, hip: 0.6, sh: 1.3 + Math.sin(t * 3 + k) * 0.15, el: 0.3 }),
-};
+// Pozlar artık iskeletli insanlara (humans.js) yönlendirilir
+export const P = Object.fromEntries(['pull', 'walk', 'carry', 'grease', 'drum', 'cheer', 'stand', 'point', 'ride', 'place', 'run'].map(n => [n, (t = 0, k = 0) => ({ _pose: n, t, k })]));
+const POSE_MAP = { grease: 'bend', place: 'bend', stand: 'idle' };
 export function putPerson(p, x, z, yaw, pp, y = null) {
-  p.root.visible = true; p.root.position.set(x, y ?? landHeight(x, z), z); p.root.rotation.set(0, yaw, 0); pose(p, pp);
+  const name = POSE_MAP[pp._pose] || pp._pose;
+  putHuman(p, x, y ?? landHeight(x, z), z, yaw, HPOSE[name] || HPOSE.idle, pp.t, pp.k);
 }
-const ROBES = [0xb03a2e, 0x2f5f8a, 0xc49a3a, 0x3f6b3a, 0x8e3b5a, 0xd8c7a0, 0x7a4a2a];
 export const workers = [];
-{ const r = rng(3); for (let i = 0; i < 110; i++) workers.push(makePerson({ seed: i + 10, robe: ROBES[Math.floor(r() * ROBES.length)], sash: [0xd9a63a, 0xc0392b, 0xf0e6d0][Math.floor(r() * 3)], pants: [0x3b3428, 0x4a3a2a, 0x2f3d4f][Math.floor(r() * 3)], cap: [0xc0392b, 0x2f6b3a, 0xd9a63a][Math.floor(r() * 3)] })); }
+for (let i = 0; i < 92; i++) workers.push(makeHuman({ seed: i * 7 + 11 }));
 export const byzSoldiers = [];
-for (let i = 0; i < 12; i++) byzSoldiers.push(makePerson({ seed: 300 + i, robe: i % 2 ? 0x5a3c7a : 0x2e4f8a, sash: 0x8a8f96, pants: 0x3a3030, hat: 'helmet' }));
-export const fatih = makePerson({ seed: 999, robe: 0xa3281d, under: 0xd9a63a, sash: 0xd9a63a, hat: 'kavuk', fur: true, beard: true, beardC: 0x3a2618, pants: 0x2a2a2a });
+for (let i = 0; i < 8; i++) byzSoldiers.push(makeHuman({ seed: 500 + i, robe: i % 2 ? 0x4e3a6a : 0x2e4766, hat: 'helmet', beard: true }));
+export const fatih = makeHuman({ seed: 999, robe: 0x8f2a20, hat: 'kavuk', beard: true, beardC: 0x3a2618, sash: 0xd9a63a, boots: 0x6a2a1a });
 
 // =============================================================== ÖKÜZ
 export function makeOx(color, seed = 1) {
@@ -368,23 +360,25 @@ export function putOx(o, x, z, yaw, ph, walk, t) {
 
 // =============================================================== AT (Fatih'in atı)
 export const horse = (() => {
-  const c = 0xe8e4dc, d = 0xb9b2a6, root = new THREE.Group();
+  const c = 0xe9e5dd, d = 0xb9b2a6, mane = 0x4a4038, root = new THREE.Group();
+  const S = (r, col, m4) => sph(r, col, m4, 16, 12);
   root.add(mesh(mergeGeometries([
-    sph(1, c, M(0, 1.55, 0, 0, 0, 0, 1.15, 0.5, 0.42), 12, 8),
-    sph(0.5, c, M(0.7, 1.6, 0, 0, 0, 0, 1, 1, 0.85), 10, 6), sph(0.5, c, M(-0.75, 1.62, 0, 0, 0, 0, 1, 1, 0.9), 10, 6),
-    cyl(0.22, 0.36, 1.1, 8, c, M(1.15, 2.1, 0, 0, 0, -0.65)),
-    box(1.0, 0.12, 0.08, 0x3a3530, 1.1, 2.35, 0, 0, 0, -0.65),                                       // yele
-    box(1.1, 0.12, 1.0, 0xa3281d, 0, 2.06, 0), box(1.15, 0.05, 1.05, 0xd9a63a, 0, 2.0, 0),          // eyer örtüsü
-  ])));
-  const head = limb(root, 1.5, 2.55, 0);
-  head.add(mesh(mergeGeometries([box(0.75, 0.3, 0.3, c, 0.25, -0.1, 0, 0, 0, -0.9), box(0.1, 0.18, 0.06, d, -0.05, 0.18, 0.09), box(0.1, 0.18, 0.06, d, -0.05, 0.18, -0.09)])));
+    S(1, c, M(0, 1.55, 0, 0, 0, 0, 1.05, 0.46, 0.4)),
+    S(0.48, c, M(0.68, 1.62, 0, 0, 0, 0, 1, 1, 0.82)), S(0.5, c, M(-0.72, 1.64, 0, 0, 0, 0, 1, 1, 0.86)),
+    cyl(0.2, 0.34, 1.0, 14, c, M(1.08, 2.08, 0, 0, 0, -0.62)),
+    box(0.95, 0.16, 0.07, mane, 1.02, 2.33, 0, 0, 0, -0.62),
+    cyl(0.62, 0.62, 0.14, 18, 0x8f2a20, M(0, 1.98, 0, 0, 0, 0, 1, 1, 0.78)), cyl(0.64, 0.64, 0.04, 18, 0xd9a63a, M(0, 1.92, 0, 0, 0, 0, 1, 1, 0.8)),
+    box(0.5, 0.18, 0.5, 0x5a3a22, 0, 2.08, 0),
+  ]), MAT_SMOOTH));
+  const head = limb(root, 1.42, 2.5, 0);
+  head.add(mesh(mergeGeometries([cyl(0.12, 0.18, 0.72, 12, c, M(0.28, -0.12, 0, 0, 0, -1.0)), S(0.1, d, M(0.58, -0.32, 0)), cone(0.05, 0.2, 6, c, M(-0.02, 0.17, 0.08)), cone(0.05, 0.2, 6, c, M(-0.02, 0.17, -0.08)), box(0.5, 0.04, 0.24, 0x3a2a1a, 0.3, -0.12, 0, 0, 0, -1.0)]), MAT_SMOOTH));
   const legs = [];
-  for (const [x, z] of [[0.7, 0.22], [0.7, -0.22], [-0.75, 0.22], [-0.75, -0.22]]) {
-    const up = limb(root, x, 1.3, z); up.add(mesh(cyl(0.11, 0.08, 0.6, 6, c, M(0, -0.3, 0))));
-    const lo = limb(up, 0, -0.6, 0); lo.add(mesh(mergeGeometries([cyl(0.06, 0.06, 0.6, 6, c, M(0, -0.3, 0)), cyl(0.08, 0.09, 0.12, 6, 0x2a2420, M(0, -0.62, 0))])));
+  for (const [x, z] of [[0.68, 0.2], [0.68, -0.2], [-0.72, 0.2], [-0.72, -0.2]]) {
+    const up = limb(root, x, 1.35, z); up.add(mesh(cyl(0.12, 0.07, 0.62, 10, c, M(0, -0.31, 0)), MAT_SMOOTH));
+    const lo = limb(up, 0, -0.62, 0); lo.add(mesh(mergeGeometries([cyl(0.055, 0.05, 0.62, 10, c, M(0, -0.31, 0)), cyl(0.075, 0.085, 0.12, 10, 0x2a2420, M(0, -0.64, 0))]), MAT_SMOOTH));
     legs.push({ up, lo });
   }
-  const tail = limb(root, -1.15, 1.75, 0); tail.add(mesh(cone(0.14, 1.1, 6, 0x3a3530, M(0, -0.5, 0, Math.PI, 0, 0))));
+  const tail = limb(root, -1.1, 1.78, 0); tail.add(mesh(cone(0.13, 1.15, 10, mane, M(0, -0.5, 0, Math.PI, 0, 0)), MAT_SMOOTH));
   root.visible = false; scene.add(root);
   return { root, legs, head, tail };
 })();
@@ -393,8 +387,7 @@ export function putFatih(x, z, yaw, t, walk = 0, y = null) {
   horse.root.visible = true; horse.root.position.set(x, gy, z); horse.root.rotation.set(0, yaw, 0);
   horse.legs.forEach((l, i) => { const a = t * 4 + (i === 0 || i === 3 ? 0 : Math.PI); l.up.rotation.z = Math.sin(a) * walk + (walk ? 0 : (i < 2 ? 0.05 : -0.05)); l.lo.rotation.z = -Math.max(0, Math.sin(a + 1.2)) * walk * 1.2; });
   horse.head.rotation.z = Math.sin(t * 1.3) * 0.08; horse.tail.rotation.x = Math.sin(t * 2) * 0.15;
-  putPerson(fatih, x - 0.05, z, yaw, P.ride(), gy + 1.18);
-  fatih.root.position.x = x + Math.cos(yaw) * 0.05; fatih.root.position.z = z - Math.sin(yaw) * 0.05;
+  putPerson(fatih, x, z, yaw, P.ride(t), gy + 1.12);
 }
 
 // =============================================================== HALAT & ÇUBUK
@@ -456,9 +449,7 @@ export function setSplashes(list) {
 // =============================================================== SIFIRLAMA
 export function hideActors() {
   resetShips();
-  for (const p of workers) p.root.visible = false;
-  for (const p of byzSoldiers) p.root.visible = false;
-  fatih.root.visible = false; horse.root.visible = false;
+  hideHumans(); horse.root.visible = false;
   for (const o of oxen) o.root.visible = false;
   for (let i = 0; i < sticks.length; i++) sticks[i].visible = false;
   sti = 0;

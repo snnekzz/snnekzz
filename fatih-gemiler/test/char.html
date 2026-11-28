@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;background:#000}#stage{position:absolute;width:1080px;height:1920px}canvas{width:1080px!important;height:1920px!important}</style>
+<script type="importmap">{ "imports": { "three": "../node_modules/three/build/three.module.js", "three/addons/": "../node_modules/three/examples/jsm/" } }</script></head>
+<body><div id="stage"></div><script type="module">
+import { THREE, scene, camera, renderer, composer, V } from '../src/core.js';
+const base = location.pathname.replace(/test\/char\.html$/, '');
+scene.background = new THREE.Color(0x9ab8d0);
+scene.add(new THREE.HemisphereLight(0xffffff, 0x556644, 1.2));
+const d = new THREE.DirectionalLight(0xffffff, 2.5); d.position.set(5, 10, 8); scene.add(d);
+const g = new THREE.Mesh(new THREE.PlaneGeometry(50, 50), new THREE.MeshStandardMaterial({ color: 0x8a9a6a })); g.rotation.x = -Math.PI/2; scene.add(g);
+const H = await import('../src/humans.js');
+const poses = ['idle','walk','pull','carry','cheer','point','bend','drum','ride'];
+const ps = poses.map((p, i) => H.makeHuman({ seed: i + 3, hat: i === 8 ? 'kavuk' : i === 7 ? 'helmet' : undefined }));
+window.renderFrame = (t) => {
+  ps.forEach((p, i) => H.putHuman(p, (i % 3 - 1) * 1.6, 0, Math.floor(i / 3) * 2.2 - 2.2, (window.YAW ?? 0), H.POSE[poses[i]], t, i));
+  camera.position.set(4, 2.0, 8); camera.fov = 50; camera.updateProjectionMatrix(); camera.lookAt(0, 0.9, 0);
+  composer.render();
+};
+window.DURATION = 2; window.ready = true;
+</script></body></html>
