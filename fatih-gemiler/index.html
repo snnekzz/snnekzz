@@ -10,20 +10,30 @@
   #stage canvas { position: absolute; left: 0; top: 0; width: 1080px !important; height: 1920px !important; }
   #overlay { position: absolute; inset: 0; pointer-events: none; font-family: 'Liberation Sans', 'Arial', sans-serif; }
 
+  /* harita etiketleri */
   .label { position: absolute; left: 0; top: 0; width: 0; height: 0; opacity: 0; --len: 150px; }
-  .label .line { position: absolute; left: -2px; bottom: 0; width: 4px; height: var(--len); background: #fff; box-shadow: 0 0 4px rgba(0,0,0,.6); }
-  .label .dot { position: absolute; left: -9px; top: -9px; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-sizing: border-box; border: 3px solid #161616; }
-  .label .box { position: absolute; bottom: var(--len); left: 0; background: #161616; color: #fff; font-weight: 900; font-size: 54px; line-height: 1; padding: 16px 24px 14px; white-space: nowrap; letter-spacing: 1px; border-radius: 4px; }
+  .label .line { position: absolute; left: -2px; bottom: 0; width: 4px; height: var(--len); background: #fff; box-shadow: 0 0 6px rgba(0,0,0,.7); }
+  .label .dot { position: absolute; left: -10px; top: -10px; width: 20px; height: 20px; border-radius: 50%; background: #ffd400; box-sizing: border-box; border: 4px solid #111; box-shadow: 0 0 10px rgba(255,212,0,.7); }
+  .label .box { position: absolute; bottom: var(--len); left: 0; background: rgba(14,14,14,.92); color: #fff; font-weight: 900; font-size: 50px; line-height: 1; padding: 16px 24px 13px; white-space: nowrap; letter-spacing: 1.5px; border-left: 8px solid #ffd400; transform-origin: 50% 100%; box-shadow: 0 8px 24px rgba(0,0,0,.45); }
 
-  #sub { position: absolute; left: 60px; right: 60px; bottom: 360px; text-align: center; color: #fff; font-weight: 900; font-size: 66px; line-height: 1.15;
-         text-shadow: 0 0 2px #000, 3px 3px 0 #000, -3px 3px 0 #000, 3px -3px 0 #000, -3px -3px 0 #000, 0 4px 0 #000, 0 -4px 0 #000, 4px 0 0 #000, -4px 0 0 #000, 0 6px 14px rgba(0,0,0,.6); }
-  #title { position: absolute; left: 0; right: 0; top: 230px; text-align: center; opacity: 0; }
-  #title .big { font-weight: 900; font-size: 200px; line-height: 1; color: #ffd76a; letter-spacing: 6px;
-                text-shadow: 0 0 3px #000, 6px 6px 0 #000, -6px 6px 0 #000, 6px -6px 0 #000, -6px -6px 0 #000, 0 10px 20px rgba(0,0,0,.6); }
-  #title .small { margin-top: 20px; display: inline-block; background: #b3261e; color: #fff; font-weight: 900; font-size: 58px; padding: 16px 30px 12px; border-radius: 6px; }
-  #punch { position: absolute; left: 0; right: 0; top: 300px; text-align: center; opacity: 0; font-weight: 900; font-size: 130px; color: #fff;
-           text-shadow: 0 0 3px #000, 6px 6px 0 #000, -6px 6px 0 #000, 6px -6px 0 #000, -6px -6px 0 #000, 0 10px 20px rgba(0,0,0,.6); }
-  #punch span { color: #ffd76a; }
+  /* kelime kelime altyazı */
+  #cap { position: absolute; left: 50px; right: 50px; top: 1260px; text-align: center; font-weight: 900; font-size: 88px; line-height: 1.12; color: #fff; letter-spacing: 0.5px;
+         text-shadow: 0 0 3px #000, 4px 4px 0 #000, -4px 4px 0 #000, 4px -4px 0 #000, -4px -4px 0 #000, 0 5px 0 #000, 0 -5px 0 #000, 5px 0 0 #000, -5px 0 0 #000, 0 10px 24px rgba(0,0,0,.65); }
+  #cap span { display: inline-block; margin: 0 0.1em; }
+  #cap span.on { color: #ffd400; transform: scale(1.08); }
+
+  #title { position: absolute; left: 0; right: 0; top: 250px; text-align: center; opacity: 0; transform-origin: 50% 30%; }
+  #title .big { font-weight: 900; font-size: 230px; line-height: 1; letter-spacing: 8px; color: #ffd76a;
+                background: linear-gradient(180deg, #fff3c4 0%, #ffd76a 45%, #c9861d 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+                filter: drop-shadow(0 6px 0 #000) drop-shadow(0 0 2px #000) drop-shadow(0 14px 24px rgba(0,0,0,.6)); }
+  #title .small { margin-top: 26px; display: inline-block; background: #b3261e; color: #fff; font-weight: 900; font-size: 56px; padding: 18px 30px 14px; letter-spacing: 1px; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+  #punch { position: absolute; left: 0; right: 0; top: 1150px; text-align: center; opacity: 0; font-weight: 900; line-height: 1; color: #fff;
+           text-shadow: 0 0 3px #000, 6px 6px 0 #000, -6px 6px 0 #000, 6px -6px 0 #000, -6px -6px 0 #000, 0 12px 26px rgba(0,0,0,.6); }
+  #punch .a { font-size: 90px; display: block; }
+  #punch .b { font-size: 170px; display: block; color: #ffd400; margin-top: 10px; }
+  #endcard { position: absolute; left: 0; right: 0; top: 230px; text-align: center; opacity: 0; color: #fff; }
+  #endcard .ch { display: inline-block; font-weight: 900; font-size: 64px; letter-spacing: 3px; padding: 18px 34px 14px; background: rgba(10,10,10,.85); border: 4px solid #ffd400; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+  #endcard .sub { margin-top: 18px; font-weight: 700; font-size: 40px; letter-spacing: 2px; text-shadow: 0 3px 0 #000, 0 0 10px #000; }
   #play { position: fixed; right: 16px; bottom: 16px; z-index: 10; font: 700 16px system-ui, sans-serif; padding: 10px 16px; border-radius: 8px; border: 0; background: #ffd76a; cursor: pointer; }
 </style>
 <script type="importmap">
@@ -36,12 +46,13 @@
 <body>
 <div id="stage">
   <div id="overlay">
-    <div id="title"><div class="big">1453</div><div class="small">GEMİLER KARADAN NASIL YÜRÜDÜ?</div></div>
-    <div id="punch">HEM DE <span>TEK GECEDE</span></div>
     <div id="labels"></div>
-    <div id="sub"></div>
+    <div id="title"><div class="big">1453</div><div class="small">GEMİLER KARADAN NASIL YÜRÜDÜ?</div></div>
+    <div id="punch"><span class="a">HEM DE</span><span class="b">TEK GECEDE</span></div>
+    <div id="endcard"><div class="ch">BİLİNMEYENİN PEŞİNDE</div><div class="sub">TAKİP ET · ARKADAŞINA GÖNDER</div></div>
+    <div id="cap"></div>
   </div>
 </div>
-<script type="module" src="./main.js"></script>
+<script type="module" src="./src/main.js"></script>
 </body>
 </html>
