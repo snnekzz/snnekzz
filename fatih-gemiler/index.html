@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Gemiler Karadan Yürüyor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+  #stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; transform-origin: 0 0; background: #000; }
+  #stage canvas { position: absolute; left: 0; top: 0; width: 1080px !important; height: 1920px !important; }
+  #overlay { position: absolute; inset: 0; pointer-events: none; font-family: 'Liberation Sans', 'Arial', sans-serif; }
+
+  .label { position: absolute; left: 0; top: 0; width: 0; height: 0; opacity: 0; --len: 150px; }
+  .label .line { position: absolute; left: -2px; bottom: 0; width: 4px; height: var(--len); background: #fff; box-shadow: 0 0 4px rgba(0,0,0,.6); }
+  .label .dot { position: absolute; left: -9px; top: -9px; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-sizing: border-box; border: 3px solid #161616; }
+  .label .box { position: absolute; bottom: var(--len); left: 0; background: #161616; color: #fff; font-weight: 900; font-size: 54px; line-height: 1; padding: 16px 24px 14px; white-space: nowrap; letter-spacing: 1px; border-radius: 4px; }
+
+  #sub { position: absolute; left: 60px; right: 60px; bottom: 360px; text-align: center; color: #fff; font-weight: 900; font-size: 66px; line-height: 1.15;
+         text-shadow: 0 0 2px #000, 3px 3px 0 #000, -3px 3px 0 #000, 3px -3px 0 #000, -3px -3px 0 #000, 0 4px 0 #000, 0 -4px 0 #000, 4px 0 0 #000, -4px 0 0 #000, 0 6px 14px rgba(0,0,0,.6); }
+  #title { position: absolute; left: 0; right: 0; top: 230px; text-align: center; opacity: 0; }
+  #title .big { font-weight: 900; font-size: 200px; line-height: 1; color: #ffd76a; letter-spacing: 6px;
+                text-shadow: 0 0 3px #000, 6px 6px 0 #000, -6px 6px 0 #000, 6px -6px 0 #000, -6px -6px 0 #000, 0 10px 20px rgba(0,0,0,.6); }
+  #title .small { margin-top: 20px; display: inline-block; background: #b3261e; color: #fff; font-weight: 900; font-size: 58px; padding: 16px 30px 12px; border-radius: 6px; }
+  #punch { position: absolute; left: 0; right: 0; top: 300px; text-align: center; opacity: 0; font-weight: 900; font-size: 130px; color: #fff;
+           text-shadow: 0 0 3px #000, 6px 6px 0 #000, -6px 6px 0 #000, 6px -6px 0 #000, -6px -6px 0 #000, 0 10px 20px rgba(0,0,0,.6); }
+  #punch span { color: #ffd76a; }
+  #play { position: fixed; right: 16px; bottom: 16px; z-index: 10; font: 700 16px system-ui, sans-serif; padding: 10px 16px; border-radius: 8px; border: 0; background: #ffd76a; cursor: pointer; }
+</style>
+<script type="importmap">
+{ "imports": {
+    "three": "./node_modules/three/build/three.module.js",
+    "three/addons/": "./node_modules/three/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="stage">
+  <div id="overlay">
+    <div id="title"><div class="big">1453</div><div class="small">GEMİLER KARADAN NASIL YÜRÜDÜ?</div></div>
+    <div id="punch">HEM DE <span>TEK GECEDE</span></div>
+    <div id="labels"></div>
+    <div id="sub"></div>
+  </div>
+</div>
+<script type="module" src="./main.js"></script>
+</body>
+</html>
