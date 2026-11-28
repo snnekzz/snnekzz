@@ -235,12 +235,12 @@ export const SHOT_FN = {
     goldenHornFleet(70); byzBehindChain();
     setLogs(999); setRoute(0); setFires(false, t);
     for (let i = 0; i < 6; i++) {
-      const p = byzSoldiers[i], z = -17 + i * 2.6, b = gy(154, z) + 9.4;
+      const p = byzSoldiers[i], z = -15 + i * 2.2, b = gy(154, z) + 9.4;
       putPerson(p, 153.4, z, Math.PI, i === 0 ? { ...P.point(t, i), look: lerp(0.6, 0, smooth(0.1, 0.5, k)) } : P.stand(t, i), b);
     }
     const e = ease(k);
     const b0 = gy(154, -17) + 9.4;
-    cam(lerpV(V(158.6, b0 + 2.9, -21.5), V(157.8, b0 + 3.0, -20.5), e), lerpV(V(118, b0 - 7, 2), V(110, 3, 12), e), 40, 0.06, t);
+    cam(lerpV(V(157.6, b0 + 2.9, -18.8), V(157.0, b0 + 3.0, -17.8), e), lerpV(V(118, b0 - 7, 2), V(110, 3, 12), e), 40, 0.06, t);
     aimSun(V(120, 0, 10), 80);
     return [];
   },
